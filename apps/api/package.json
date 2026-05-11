@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "nest start --watch",
+    "prebuild": "prisma generate",
     "build": "nest build",
     "start": "node dist/main",
+    "postinstall": "prisma generate",
     "lint": "eslint --config eslint.config.mjs \"src/**/*.ts\" \"prisma/**/*.ts\" \"test/**/*.ts\"",
     "test": "node --import tsx --test test/**/*.test.ts",
     "typecheck": "tsc --noEmit",

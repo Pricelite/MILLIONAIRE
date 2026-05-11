@@ -1,0 +1,27 @@
+
+> restomaster-monorepo@2.0.0 dev:stack C:\dev\MILLIONAIRE
+> turbo run dev --parallel --filter=@restomaster/web --filter=@restomaster/api
+
+
+   • Packages in scope: @restomaster/api, @restomaster/web
+   • Running dev in 2 packages
+   • Remote caching disabled
+
+@restomaster/api:dev: cache bypass, force executing 862cd74437ab2c23
+@restomaster/web:dev: cache bypass, force executing 9b2fb84aac5d81c4
+@restomaster/api:dev: 
+@restomaster/api:dev: > @restomaster/api@1.0.0 dev C:\dev\MILLIONAIRE\apps\api
+@restomaster/api:dev: > nest start --watch
+@restomaster/api:dev: 
+@restomaster/web:dev: 
+@restomaster/web:dev: > @restomaster/web@1.0.0 dev C:\dev\MILLIONAIRE\apps\web
+@restomaster/web:dev: > next dev -p 3000
+@restomaster/web:dev: 
+@restomaster/api:dev: [2J[3J[H[[90m15:51:40[0m] Starting compilation in watch mode...
+@restomaster/api:dev: 
+@restomaster/web:dev:    ▲ Next.js 15.5.12
+@restomaster/web:dev:    - Local:        http://localhost:3000
+@restomaster/web:dev:    - Network:      http://172.20.10.2:3000
+@restomaster/web:dev: 
+@restomaster/web:dev:  ✓ Starting...
+@restomaster/web:dev:  ✓ Ready in 8.5s

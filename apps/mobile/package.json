@@ -1,0 +1,22 @@
+{
+  "name": "@restomaster/mobile",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "expo start",
+    "build": "echo build-mobile",
+    "lint": "echo lint-mobile",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "expo": "^53.0.0",
+    "expo-router": "^5.0.0",
+    "react": "19.0.0",
+    "react-native": "0.79.2",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "@types/react": "^19.1.4"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "restomaster-monorepo",
+  "version": "2.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.28.2",
+  "scripts": {
+    "dev": "pnpm --filter @restomaster/web dev",
+    "dev:stack": "turbo run dev --parallel --filter=@restomaster/web --filter=@restomaster/api",
+    "dev:all": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0",
+    "typescript": "^5.8.3"
+  }
+}

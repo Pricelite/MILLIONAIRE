@@ -1,0 +1,8 @@
+export enum AppRole {
+  SUPER_ADMIN = "SUPER_ADMIN",
+  MANAGER = "MANAGER",
+  WAITER = "WAITER",
+  CASHIER = "CASHIER",
+  DRIVER = "DRIVER",
+  CUSTOMER = "CUSTOMER"
+}

@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@restomaster/types": ["packages/types/src"],
+      "@restomaster/utils": ["packages/utils/src"],
+      "@restomaster/ui": ["packages/ui/src"]
+    }
+  }
+}

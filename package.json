@@ -27,7 +27,12 @@
     "onlyBuiltDependencies": [
       "@prisma/client",
       "@prisma/engines",
-      "prisma"
+      "prisma",
+      "@nestjs/core",
+      "@scarf/scarf",
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
     ]
   }
 }

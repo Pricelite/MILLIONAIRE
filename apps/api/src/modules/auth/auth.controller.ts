@@ -6,8 +6,6 @@ import { ForgotPasswordDto } from "./dto/forgot-password.dto";
 import { LoginDto } from "./dto/login.dto";
 import { RefreshDto } from "./dto/refresh.dto";
 import { RegisterDto } from "./dto/register.dto";
-import { ResetPasswordDto } from "./dto/reset-password.dto";
-import { VerifyEmailDto } from "./dto/verify-email.dto";
 
 @ApiTags("auth")
 @Controller("auth")
@@ -35,12 +33,12 @@ export class AuthController {
   }
 
   @Post("reset-password")
-  resetPassword(@Body() dto: ResetPasswordDto) {
+  resetPassword() {
     return this.authService.resetPassword();
   }
 
   @Post("verify-email")
-  verifyEmail(@Body() dto: VerifyEmailDto) {
+  verifyEmail() {
     return this.authService.verifyEmail();
   }
 }

@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "expo start",
     "build": "echo build-mobile",
-    "lint": "echo lint-mobile",
+    "lint": "eslint --config eslint.config.mjs \"app/**/*.tsx\" \"src/**/*.ts\" \"test/**/*.ts\"",
+    "test": "node --import tsx --test test/**/*.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

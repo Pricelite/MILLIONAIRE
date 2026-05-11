@@ -16,7 +16,7 @@ export default function DashboardPage() {
 
       <div className="grid gap-3 md:grid-cols-3">
         <div className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-4">
-          <p className="text-sm text-zinc-400">Chiffre d'affaires</p>
+          <p className="text-sm text-zinc-400">Chiffre d&apos;affaires</p>
           <p className="text-xl font-bold">{currency(stats.data?.revenue ?? 0)}</p>
         </div>
         <div className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-4">

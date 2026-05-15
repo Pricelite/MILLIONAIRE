@@ -13,6 +13,7 @@ export type CatalogItem = {
 export type QuoteLineInput = {
   code?: string;
   label: string;
+  subCategory?: string;
   quantity: number;
   unit?: string;
   unitPrice?: number;
@@ -22,6 +23,7 @@ export type QuoteLineInput = {
 
 export type QuoteOutputLine = {
   label: string;
+  subCategory?: string;
   quantity: number;
   unit: string;
   unitPrice: number;

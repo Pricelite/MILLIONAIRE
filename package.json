@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "node scripts/clean-next.mjs && next dev",
+    "build": "node scripts/clean-next.mjs && next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "clean:next": "node scripts/clean-next.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.53.0",

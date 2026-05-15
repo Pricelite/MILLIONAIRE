@@ -1,16 +1,18 @@
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 import { QuoteGeneratorForm } from "@/components/quote-generator-form";
+import { ManualQuoteForm } from "@/components/manual-quote-form";
+import { PageHeader, PageShell } from "@/components/page-shell";
 
 export default function NewQuotePage() {
   return (
-    <main className="mx-auto min-h-screen w-full max-w-5xl space-y-5 p-4 md:p-8">
-      <Link href="/dashboard" className="inline-flex items-center gap-2 text-sm text-slate-600">
-        <ArrowLeft className="h-4 w-4" />
-        Retour dashboard
-      </Link>
-      <QuoteGeneratorForm />
-    </main>
+    <PageShell maxWidth="5xl">
+      <PageHeader
+        title="Nouveau devis IA"
+        subtitle="Tu peux generer avec IA ou creer un devis manuel sans IA."
+      />
+      <section className="surface-panel p-3">
+        <QuoteGeneratorForm />
+      </section>
+      <ManualQuoteForm />
+    </PageShell>
   );
 }
-

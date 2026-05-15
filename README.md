@@ -20,6 +20,7 @@ pnpm dev
 - `OPENAI_MODEL` (par defaut `gpt-4.1-mini`)
 - `STRIPE_SECRET_KEY`
 - `STRIPE_WEBHOOK_SECRET`
+- `ENFORCE_API_AUTH` (`true` en production recommande)
 
 ## Schema SQL
 
@@ -37,4 +38,3 @@ Importer `supabase/schema.sql` dans Supabase SQL Editor.
 ## Docs produit
 
 - [Blueprint complet](docs/MASTER_PLAN.md)
-

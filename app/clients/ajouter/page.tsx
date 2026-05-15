@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
-import { ArrowLeft } from "lucide-react";
+import { PageHeader, PageShell } from "@/components/page-shell";
 
 type ClientForm = {
   fullName: string;
@@ -87,58 +86,56 @@ export default function AddClientPage() {
   }
 
   return (
-    <main className="mx-auto min-h-screen w-full max-w-4xl space-y-5 p-4 md:p-8">
-      <Link href="/dashboard" className="inline-flex items-center gap-2 text-sm text-slate-600">
-        <ArrowLeft className="h-4 w-4" />
-        Retour dashboard
-      </Link>
+    <PageShell maxWidth="4xl">
+      <PageHeader
+        title="Ajouter un client"
+        subtitle="Creation d'une fiche client rapide pour les devis et factures."
+      />
 
-      <section className="card p-5">
-        <h1 className="text-2xl font-bold">Ajouter un client</h1>
-        <p className="mt-1 text-sm text-slate-600">Creation d&apos;une fiche client rapide pour les devis et factures.</p>
+      <section className="surface-panel p-5">
 
         <form onSubmit={handleSubmit} className="mt-4 grid gap-3 md:grid-cols-2">
           <input
-            className="rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-brand-500"
+            className="form-control"
             placeholder="Nom complet *"
             value={form.fullName}
             onChange={(e) => updateField("fullName", e.target.value)}
             required
           />
           <input
-            className="rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-brand-500"
+            className="form-control"
             placeholder="Telephone *"
             value={form.phone}
             onChange={(e) => updateField("phone", e.target.value)}
             required
           />
           <input
-            className="rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-brand-500"
+            className="form-control"
             placeholder="Email"
             type="email"
             value={form.email}
             onChange={(e) => updateField("email", e.target.value)}
           />
           <input
-            className="rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-brand-500"
+            className="form-control"
             placeholder="Code postal"
             value={form.postalCode}
             onChange={(e) => updateField("postalCode", e.target.value)}
           />
           <input
-            className="rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-brand-500 md:col-span-2"
+            className="form-control md:col-span-2"
             placeholder="Adresse"
             value={form.address}
             onChange={(e) => updateField("address", e.target.value)}
           />
           <input
-            className="rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-brand-500 md:col-span-2"
+            className="form-control md:col-span-2"
             placeholder="Ville"
             value={form.city}
             onChange={(e) => updateField("city", e.target.value)}
           />
           <textarea
-            className="min-h-28 rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-brand-500 md:col-span-2"
+            className="min-h-28 form-control md:col-span-2"
             placeholder="Notes"
             value={form.notes}
             onChange={(e) => updateField("notes", e.target.value)}
@@ -151,7 +148,7 @@ export default function AddClientPage() {
       </section>
 
       {createdRecord ? (
-        <section className="card p-5">
+        <section className="surface-panel p-5">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <h2 className="text-lg font-semibold">Fiche client creee</h2>
@@ -168,6 +165,7 @@ export default function AddClientPage() {
           </pre>
         </section>
       ) : null}
-    </main>
+    </PageShell>
   );
 }
+

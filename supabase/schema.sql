@@ -170,7 +170,7 @@ create table if not exists public.reminders (
 
 create table if not exists public.price_library (
   id uuid primary key default gen_random_uuid(),
-  company_id uuid references public.companies(id) on delete cascade,
+  company_id uuid not null references public.companies(id) on delete cascade,
   code text not null,
   label text not null,
   category text not null,
@@ -178,9 +178,18 @@ create table if not exists public.price_library (
   unit_price_ht numeric(12,2) not null,
   vat_rate numeric(5,4) not null default 0.2,
   region text not null default 'fr_standard',
+  supplier_name text,
+  product_url text,
+  image_url text,
+  source_updated_at date,
   is_active boolean not null default true,
   created_at timestamptz not null default now()
 );
+
+alter table public.price_library add column if not exists supplier_name text;
+alter table public.price_library add column if not exists product_url text;
+alter table public.price_library add column if not exists image_url text;
+alter table public.price_library add column if not exists source_updated_at date;
 
 create table if not exists public.document_templates (
   id uuid primary key default gen_random_uuid(),
@@ -198,6 +207,10 @@ create index if not exists idx_quotes_status on public.quotes(status);
 create index if not exists idx_invoices_company_id on public.invoices(company_id);
 create index if not exists idx_invoices_status on public.invoices(status);
 create index if not exists idx_reminders_status_scheduled on public.reminders(status, scheduled_at);
+create index if not exists idx_price_library_company_region_active on public.price_library(company_id, region, is_active);
+create unique index if not exists uq_price_library_company_code_region_active
+on public.price_library(company_id, code, region)
+where is_active = true;
 
 alter table public.profiles enable row level security;
 alter table public.companies enable row level security;
@@ -238,5 +251,68 @@ for all using (
   )
 );
 
--- Repliquer le meme modele de policy pour quotes/invoices au deploiement.
+create policy "company_members_select_self" on public.company_members
+for select using (user_id = auth.uid());
 
+create policy "company_members_insert_self" on public.company_members
+for insert with check (user_id = auth.uid());
+
+create policy "company_members_delete_self" on public.company_members
+for delete using (user_id = auth.uid());
+
+create policy "member_access_price_library" on public.price_library
+for select using (
+  exists (
+    select 1 from public.company_members m
+    where m.company_id = price_library.company_id and m.user_id = auth.uid()
+  )
+  or exists (
+    select 1 from public.companies c
+    where c.id = price_library.company_id and c.owner_id = auth.uid()
+  )
+);
+
+create policy "member_insert_price_library" on public.price_library
+for insert with check (
+  exists (
+    select 1 from public.company_members m
+    where m.company_id = price_library.company_id and m.user_id = auth.uid()
+  )
+  or exists (
+    select 1 from public.companies c
+    where c.id = price_library.company_id and c.owner_id = auth.uid()
+  )
+);
+
+create policy "member_update_price_library" on public.price_library
+for update using (
+  exists (
+    select 1 from public.company_members m
+    where m.company_id = price_library.company_id and m.user_id = auth.uid()
+  )
+  or exists (
+    select 1 from public.companies c
+    where c.id = price_library.company_id and c.owner_id = auth.uid()
+  )
+) with check (
+  exists (
+    select 1 from public.company_members m
+    where m.company_id = price_library.company_id and m.user_id = auth.uid()
+  )
+  or exists (
+    select 1 from public.companies c
+    where c.id = price_library.company_id and c.owner_id = auth.uid()
+  )
+);
+
+create policy "member_delete_price_library" on public.price_library
+for delete using (
+  exists (
+    select 1 from public.company_members m
+    where m.company_id = price_library.company_id and m.user_id = auth.uid()
+  )
+  or exists (
+    select 1 from public.companies c
+    where c.id = price_library.company_id and c.owner_id = auth.uid()
+  )
+);

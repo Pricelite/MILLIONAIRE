@@ -1,6 +1,5 @@
-import { getCatalog } from "./catalog";
-import { getCatalogFromLibrary } from "./library-server";
-import { PricingRegion, QuoteLineInput } from "./types";
+﻿import { getCatalogFromLibrary } from "./library-server";
+import { CatalogItem, PricingRegion, QuoteLineInput } from "./types";
 
 type Trade = "carrelage" | "peinture" | "plomberie" | "electricite" | "menuiserie" | "paysagiste" | "general";
 
@@ -24,10 +23,15 @@ const tradeKeywords: Record<Trade, string[]> = {
   general: []
 };
 
-export async function researchQuoteContext(description: string, region: PricingRegion): Promise<ResearchResult> {
+export async function researchQuoteContext(
+  description: string,
+  region: PricingRegion,
+  detailLevel: "standard" | "expert" = "standard",
+  companyId?: string
+): Promise<ResearchResult> {
   const text = normalize(description);
   const trade = detectTrade(text);
-  const catalog = await getCatalogFromLibrary(region).catch(() => getCatalog(region));
+  const catalog = await getCatalogFromLibrary(region, companyId);
   const assumptions: string[] = [];
 
   const areaM2 = extractQuantity(text, ["m2", "m²"]);
@@ -43,6 +47,9 @@ export async function researchQuoteContext(description: string, region: PricingR
 
   if (!room) {
     assumptions.push("Piece non precisee: application de standards generaux.");
+  }
+  if (detailLevel === "expert") {
+    assumptions.push("Mode detail expert active.");
   }
 
   const baseArea = areaM2 ?? 12;
@@ -66,7 +73,7 @@ function buildSuggestedLines(
   trade: Trade,
   area: number,
   length: number,
-  catalog: ReturnType<typeof getCatalog>
+  catalog: CatalogItem[]
 ): QuoteLineInput[] {
   const lines: QuoteLineInput[] = [];
   const add = (code: string, quantity: number, category: QuoteLineInput["category"]) => {
@@ -154,3 +161,4 @@ function normalize(value: string) {
 function round(value: number) {
   return Math.round(value * 100) / 100;
 }
+

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { TopRightHomeButton } from "@/components/top-right-home-button";
 
 export const metadata: Metadata = {
   title: "DevisPro AI",
@@ -13,8 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body>{children}</body>
+      <body>
+        <TopRightHomeButton />
+        {children}
+      </body>
     </html>
   );
 }
-

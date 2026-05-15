@@ -17,6 +17,7 @@ export function estimateQuoteFromLines(input: {
     const vatRate = line.vatRate ?? fromCatalog?.vatRate ?? 0.2;
     return {
       label: line.label,
+      subCategory: line.subCategory,
       quantity: line.quantity,
       unit,
       unitPrice,
@@ -63,4 +64,3 @@ function averageVat(lines: QuoteOutputLine[]) {
 function round2(value: number) {
   return Math.round(value * 100) / 100;
 }
-

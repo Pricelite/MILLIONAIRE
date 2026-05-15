@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { FileText, Send, Wallet, Clock3 } from "lucide-react";
 import { QuoteGeneratorForm } from "@/components/quote-generator-form";
-import { VisualGeneratorForm } from "@/components/visual-generator-form";
 
 const stats = [
   {
@@ -77,9 +76,6 @@ export default function DashboardPage() {
 
       <section className="reveal hover-lift rounded-2xl border border-blue-100 bg-white/85 p-3 backdrop-blur" style={{ animationDelay: "440ms" }}>
         <QuoteGeneratorForm />
-      </section>
-      <section className="reveal hover-lift rounded-2xl border border-fuchsia-100 bg-white/85 p-3 backdrop-blur" style={{ animationDelay: "540ms" }}>
-        <VisualGeneratorForm />
       </section>
     </main>
   );

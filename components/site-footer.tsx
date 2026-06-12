@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Instagram, Mail, Music2 } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, Music2, Twitter } from "lucide-react";
 import { company } from "@/lib/site-data";
 
 export function SiteFooter() {
@@ -18,6 +18,7 @@ export function SiteFooter() {
         <Link href="/tarifs">Tarifs</Link>
         <Link href="/portfolio">Portfolio</Link>
         <Link href="/contact">Contact</Link>
+        <Link href="/conditions-generales-de-vente">CGV</Link>
         <Link href="/mentions-legales">Mentions légales</Link>
       </div>
 
@@ -33,6 +34,12 @@ export function SiteFooter() {
         </a>
         <a href={company.tiktok} aria-label="TikTok">
           <Music2 size={18} aria-hidden="true" />
+        </a>
+        <a href={company.x} aria-label="X">
+          <Twitter size={18} aria-hidden="true" />
+        </a>
+        <a href={company.linkedin} aria-label="LinkedIn">
+          <Linkedin size={18} aria-hidden="true" />
         </a>
       </div>
     </footer>

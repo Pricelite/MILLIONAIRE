@@ -11,7 +11,8 @@ type PageKey =
   | "portfolio"
   | "aPropos"
   | "contact"
-  | "mentionsLegales";
+  | "mentionsLegales"
+  | "cgv";
 
 type PageSeo = {
   path: string;
@@ -112,6 +113,19 @@ export const pageSeo: Record<PageKey, PageSeo> = {
       "hébergeur Studio V Création",
       "données personnelles Studio V Création"
     ]
+  },
+  cgv: {
+    path: "/conditions-generales-de-vente",
+    title: "Conditions Générales de Vente",
+    description:
+      "Consultez les Conditions Générales de Vente Studio V. Création applicables aux prestations de communication graphique : commande, paiement, délais, modifications, livraison et propriété intellectuelle.",
+    keywords: [
+      "CGV Studio V Création",
+      "conditions générales de vente graphiste",
+      "CGV prestations communication graphique",
+      "commande supports de communication",
+      "propriété intellectuelle création graphique"
+    ]
   }
 };
 
@@ -188,7 +202,13 @@ export const organizationJsonLd = {
     addressCountry: "FR",
     addressLocality: "France"
   },
-  sameAs: [company.instagram, company.facebook, company.tiktok],
+  sameAs: [
+    company.instagram,
+    company.facebook,
+    company.tiktok,
+    company.x,
+    company.linkedin
+  ],
   priceRange: "€€",
   knowsAbout: [
     "Publications réseaux sociaux",

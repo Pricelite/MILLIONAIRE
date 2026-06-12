@@ -1,5 +1,5 @@
-import { BrevoClient, BrevoError } from "@getbrevo/brevo";
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -12,15 +12,17 @@ type ContactPayload = {
   website?: unknown;
 };
 
+type ContactData = {
+  name: string;
+  email: string;
+  need: string;
+  message: string;
+};
+
 type ValidationResult =
   | {
       ok: true;
-      data: {
-        name: string;
-        email: string;
-        need: string;
-        message: string;
-      };
+      data: ContactData;
       isSpam: boolean;
     }
   | {
@@ -28,12 +30,18 @@ type ValidationResult =
       error: string;
     };
 
+const receiverEmail = "contact.studio.vcreation@gmail.com";
+
 const fieldLimits = {
   name: 120,
   email: 180,
   need: 120,
   message: 2500
 };
+
+const rateLimitWindowMs = 15 * 60 * 1000;
+const rateLimitMaxRequests = 5;
+const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
 
 function cleanText(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
@@ -63,7 +71,12 @@ function validatePayload(payload: ContactPayload): ValidationResult {
     return {
       ok: true,
       isSpam: true,
-      data: { name: "Spam", email: "spam@example.com", need: "Spam", message: "Spam" }
+      data: {
+        name: "Spam",
+        email: "spam@example.com",
+        need: "Spam",
+        message: "Spam"
+      }
     };
   }
 
@@ -103,7 +116,85 @@ function getRequiredEnv(name: string) {
   return value;
 }
 
+function getReceiverEmail() {
+  return process.env.CONTACT_RECEIVER_EMAIL?.trim() || receiverEmail;
+}
+
+function getClientIp(request: Request) {
+  const forwardedFor = request.headers.get("x-forwarded-for");
+
+  if (forwardedFor) {
+    return forwardedFor.split(",")[0]?.trim() || "unknown";
+  }
+
+  return request.headers.get("x-real-ip") || "unknown";
+}
+
+function isRateLimited(identifier: string) {
+  const now = Date.now();
+  const current = rateLimitStore.get(identifier);
+
+  if (!current || current.resetAt <= now) {
+    rateLimitStore.set(identifier, {
+      count: 1,
+      resetAt: now + rateLimitWindowMs
+    });
+    return false;
+  }
+
+  if (current.count >= rateLimitMaxRequests) {
+    return true;
+  }
+
+  current.count += 1;
+  rateLimitStore.set(identifier, current);
+  return false;
+}
+
+function buildEmailHtml({ name, email, need, message }: ContactData) {
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safeNeed = escapeHtml(need);
+  const safeMessage = escapeHtml(message).replace(/\n/g, "<br />");
+
+  return `
+    <div style="font-family: Arial, sans-serif; color: #2f2a2c; line-height: 1.6;">
+      <h1 style="color: #8b554f;">Nouvelle demande Studio V. Création</h1>
+      <p><strong>Nom / entreprise :</strong> ${safeName}</p>
+      <p><strong>E-mail :</strong> ${safeEmail}</p>
+      <p><strong>Type de besoin :</strong> ${safeNeed}</p>
+      <p><strong>Message :</strong></p>
+      <p>${safeMessage}</p>
+    </div>
+  `;
+}
+
+function buildEmailText({ name, email, need, message }: ContactData) {
+  return [
+    "Nouvelle demande depuis le site Studio V. Création",
+    "",
+    `Nom / entreprise : ${name}`,
+    `E-mail : ${email}`,
+    `Type de besoin : ${need}`,
+    "",
+    "Message :",
+    message
+  ].join("\n");
+}
+
 export async function POST(request: Request) {
+  const clientIp = getClientIp(request);
+
+  if (isRateLimited(clientIp)) {
+    return NextResponse.json(
+      {
+        ok: false,
+        message: "Trop de demandes envoyées. Merci de réessayer dans quelques minutes."
+      },
+      { status: 429 }
+    );
+  }
+
   let payload: ContactPayload;
 
   try {
@@ -125,73 +216,52 @@ export async function POST(request: Request) {
   }
 
   if (validation.isSpam) {
-    return NextResponse.json({ ok: true });
-  }
-
-  try {
-    const apiKey = getRequiredEnv("BREVO_API_KEY");
-    const senderEmail = getRequiredEnv("BREVO_SENDER_EMAIL");
-    const senderName = getRequiredEnv("BREVO_SENDER_NAME");
-    const receiverEmail = getRequiredEnv("CONTACT_RECEIVER_EMAIL");
-
-    const brevo = new BrevoClient({
-      apiKey,
-      timeoutInSeconds: 15,
-      maxRetries: 2
-    });
-
-    const { name, email, need, message } = validation.data;
-    const safeName = escapeHtml(name);
-    const safeEmail = escapeHtml(email);
-    const safeNeed = escapeHtml(need);
-    const safeMessage = escapeHtml(message).replace(/\n/g, "<br />");
-
-    await brevo.transactionalEmails.sendTransacEmail({
-      subject: `Nouvelle demande Studio V. Création - ${need}`,
-      sender: {
-        email: senderEmail,
-        name: senderName
-      },
-      to: [{ email: receiverEmail }],
-      replyTo: {
-        email,
-        name
-      },
-      textContent: [
-        "Nouvelle demande depuis le site Studio V. Création",
-        "",
-        `Nom / entreprise : ${name}`,
-        `E-mail : ${email}`,
-        `Type de besoin : ${need}`,
-        "",
-        "Message :",
-        message
-      ].join("\n"),
-      htmlContent: `
-        <div style="font-family: Arial, sans-serif; color: #2f2a2c; line-height: 1.6;">
-          <h1 style="color: #8b554f;">Nouvelle demande Studio V. Création</h1>
-          <p><strong>Nom / entreprise :</strong> ${safeName}</p>
-          <p><strong>E-mail :</strong> ${safeEmail}</p>
-          <p><strong>Type de besoin :</strong> ${safeNeed}</p>
-          <p><strong>Message :</strong></p>
-          <p>${safeMessage}</p>
-        </div>
-      `
-    });
-
     return NextResponse.json({
       ok: true,
       message: "Votre demande a bien été envoyée."
     });
-  } catch (error) {
-    if (error instanceof BrevoError) {
-      console.error("Brevo contact email error", {
-        statusCode: error.statusCode,
-        message: error.message
-      });
-    } else {
-      console.error("Contact route error", error);
+  }
+
+  try {
+    const resend = new Resend(getRequiredEnv("RESEND_API_KEY"));
+    const fromEmail = getRequiredEnv("RESEND_FROM_EMAIL");
+    const toEmail = getReceiverEmail();
+    const { name, email, need } = validation.data;
+
+    const { error } = await resend.emails.send({
+      from: fromEmail,
+      to: [toEmail],
+      replyTo: email,
+      subject: `Nouvelle demande Studio V. Création - ${need}`,
+      text: buildEmailText(validation.data),
+      html: buildEmailHtml(validation.data),
+      tags: [
+        {
+          name: "source",
+          value: "studio-v-creation-contact"
+        }
+      ]
+    });
+
+    if (error) {
+      console.error("Resend contact email error", error);
+
+      return NextResponse.json(
+        {
+          ok: false,
+          message:
+            "L’envoi du message a échoué. Merci de réessayer ou d’envoyer un e-mail directement."
+        },
+        { status: 500 }
+      );
     }
+
+    return NextResponse.json({
+      ok: true,
+      message: `Merci ${name}, votre demande a bien été envoyée.`
+    });
+  } catch (error) {
+    console.error("Contact route error", error);
 
     return NextResponse.json(
       {

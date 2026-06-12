@@ -41,9 +41,9 @@ export default function MentionsLegalesPage() {
 
       <section className="section legalPage">
         <SectionHeading
-          eyebrow="À compléter avant publication"
+          eyebrow="Informations légales"
           title="Informations d’identification"
-          text="Les champs ci-dessous sont centralisés dans lib/site-data.ts pour être modifiés facilement."
+          text="Les champs ci-dessous sont centralisés dans lib/site-data.ts pour rester faciles à modifier."
         />
 
         <div className="legalGrid">

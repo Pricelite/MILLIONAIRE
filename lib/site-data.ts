@@ -19,10 +19,12 @@ import {
 export const company = {
   name: "Studio V. Création",
   slogan: "Je crée, vous publiez.",
-  email: "contact@studiovcreation.fr",
-  instagram: "https://www.instagram.com/",
-  facebook: "https://www.facebook.com/",
-  tiktok: "https://www.tiktok.com/",
+  email: "contact.studio.vcreation@gmail.com",
+  instagram: "https://www.instagram.com/studiovcreation",
+  facebook: "https://www.facebook.com/studiovcreation",
+  tiktok: "https://www.tiktok.com/@studiovcreation",
+  x: "https://x.com/studiovcreation",
+  linkedin: "https://www.linkedin.com/company/studio-v-creation",
   description:
     "Studio V. Création accompagne les commerçants, artisans, indépendants, associations et petites entreprises dans la création de supports de communication prêts à l’emploi."
 };
@@ -31,17 +33,36 @@ export const company = {
 export const legalInfo = {
   ownerName: "Studio V. Création",
   legalStatus: "Entreprise individuelle / micro-entreprise",
-  address: "Adresse à compléter",
-  phone: "Téléphone à compléter",
+  address: "19 rue de la Tuilerie, 45240 La Ferté-Saint-Aubin, France",
+  phone: "07 84 14 97 13",
   email: company.email,
-  siret: "SIRET à compléter",
-  publicationDirector: "Nom du directeur ou de la directrice de publication à compléter",
+  siret: "En attente d’attribution",
+  publicationDirector: "Virginie Cassegarin",
   hostingProvider: {
     name: "Vercel Inc.",
     address: "440 N Barranca Ave #4133, Covina, CA 91723, États-Unis",
-    phone: "Téléphone de l’hébergeur à compléter",
+    phone: "Non communiqué par l’hébergeur",
     website: "https://vercel.com"
   }
+};
+
+// Paramètres contractuels modifiables pour les Conditions Générales de Vente.
+export const salesTermsInfo = {
+  versionDate: "12 juin 2026",
+  quoteValidityDays: 30,
+  depositRate: "50 %",
+  balancePaymentMoment: "avant la livraison finale des fichiers",
+  includedRevisionRounds: 2,
+  extraRevisionBilling:
+    "Toute modification supplémentaire peut faire l’objet d’un devis complémentaire.",
+  deliveryMethod: "livraison numérique par e-mail, lien de téléchargement ou espace partagé",
+  fileFormats:
+    "PNG, JPG, PDF ou autre format convenu lors de la commande",
+  cancellationBeforeStart:
+    "En cas d’annulation avant le démarrage de la prestation, les sommes versées peuvent être remboursées déduction faite des frais déjà engagés.",
+  cancellationAfterStart:
+    "En cas d’annulation après le démarrage, les sommes correspondant au travail déjà réalisé restent dues.",
+  governingLaw: "droit français"
 };
 
 export const audiences = [

@@ -264,6 +264,10 @@ h1 {
   gap: 12px;
 }
 
+.motionButtonWrap {
+  display: inline-flex;
+}
+
 .trustStrip {
   width: min(1180px, calc(100% - 28px));
   margin: -36px auto 0;
@@ -371,6 +375,7 @@ h1 {
   border-radius: 22px;
   background: rgba(255, 253, 252, 0.88);
   box-shadow: 0 18px 50px rgba(93, 55, 62, 0.08);
+  will-change: transform;
 }
 
 .serviceCard,
@@ -406,6 +411,34 @@ h1 {
 .contactAside p {
   color: var(--muted);
   line-height: 1.65;
+}
+
+.reasonCard summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 900;
+  list-style: none;
+}
+
+.reasonCard summary::-webkit-details-marker {
+  display: none;
+}
+
+.reasonCard details,
+details.reasonCard {
+  overflow: hidden;
+}
+
+details.reasonCard[open] {
+  background: var(--white);
+}
+
+details.reasonCard p {
+  margin-top: 16px;
 }
 
 .serviceCard span {
@@ -871,6 +904,17 @@ h1 {
   margin-top: 20px;
 }
 
+.inlineListItem {
+  display: inline-flex;
+  margin: 6px 6px 0 0;
+  border-radius: 999px;
+  background: var(--soft);
+  padding: 7px 10px;
+  color: var(--rose-gold-dark);
+  font-size: 13px;
+  font-weight: 900;
+}
+
 .contactLine,
 .contactSocials a {
   display: flex;
@@ -1017,7 +1061,9 @@ h1 {
   }
 
   .heroActions .button,
+  .heroActions .motionButtonWrap,
   .quoteCta .button,
+  .quoteCta .motionButtonWrap,
   .contactForm .button {
     width: 100%;
   }

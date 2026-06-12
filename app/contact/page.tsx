@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Instagram, Mail, Music2 } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, Music2, Twitter } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { SectionHeading } from "@/components/section-heading";
 import { company } from "@/lib/site-data";
@@ -73,10 +73,17 @@ export default function ContactPage() {
               <Music2 size={18} aria-hidden="true" />
               TikTok
             </Link>
+            <Link href={company.x}>
+              <Twitter size={18} aria-hidden="true" />
+              X
+            </Link>
+            <Link href={company.linkedin}>
+              <Linkedin size={18} aria-hidden="true" />
+              LinkedIn
+            </Link>
           </div>
           <p className="asideNote">
-            Remplacez ces liens par vos vrais réseaux sociaux avant la mise en
-            ligne.
+            Vérifiez les URLs exactes de vos profils avant la mise en ligne.
           </p>
         </aside>
       </section>

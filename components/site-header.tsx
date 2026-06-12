@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu } from "lucide-react";
+import { AnimatePresence, m } from "framer-motion";
 import { company } from "@/lib/site-data";
 
 const navigation = [
@@ -46,15 +47,30 @@ export function SiteHeader() {
         <Menu size={21} aria-hidden="true" />
       </button>
 
-      {isOpen ? (
-        <div className="mobileNav">
-          {navigation.map((item) => (
-            <Link href={item.href} key={item.href} onClick={() => setIsOpen(false)}>
-              {item.label}
-            </Link>
-          ))}
-        </div>
-      ) : null}
+      <AnimatePresence>
+        {isOpen ? (
+          <m.div
+            className="mobileNav"
+            initial={{ opacity: 0, height: 0, y: -8 }}
+            animate={{ opacity: 1, height: "auto", y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -8 }}
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {navigation.map((item, index) => (
+              <m.div
+                key={item.href}
+                initial={{ opacity: 0, x: -8 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.035 }}
+              >
+                <Link href={item.href} onClick={() => setIsOpen(false)}>
+                  {item.label}
+                </Link>
+              </m.div>
+            ))}
+          </m.div>
+        ) : null}
+      </AnimatePresence>
     </header>
   );
 }

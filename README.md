@@ -16,7 +16,7 @@ de communication prêts à l’emploi.
 
 ```bash
 pnpm install
-pnpm add @getbrevo/brevo
+pnpm add resend
 pnpm dev
 ```
 
@@ -28,18 +28,16 @@ Créer un fichier `.env.local` en local et ajouter les mêmes variables dans
 Vercel, section `Project Settings > Environment Variables`.
 
 ```bash
-BREVO_API_KEY=
-BREVO_SENDER_EMAIL=
-BREVO_SENDER_NAME="Studio V. Création"
-CONTACT_RECEIVER_EMAIL=
+RESEND_API_KEY=
+RESEND_FROM_EMAIL="Studio V. Création <noreply@studiovcreation.fr>"
+CONTACT_RECEIVER_EMAIL=contact.studio.vcreation@gmail.com
 ```
 
-- `BREVO_API_KEY` : clé API Brevo Transactional Email.
-- `BREVO_SENDER_EMAIL` : adresse expéditrice validée dans Brevo.
-- `BREVO_SENDER_NAME` : nom affiché comme expéditeur.
+- `RESEND_API_KEY` : clé API Resend.
+- `RESEND_FROM_EMAIL` : adresse expéditrice validée dans Resend.
 - `CONTACT_RECEIVER_EMAIL` : adresse qui reçoit les demandes de devis.
 
-La clé Brevo reste uniquement côté serveur dans `app/api/contact/route.ts`.
+La clé Resend reste uniquement côté serveur dans `app/api/contact/route.ts`.
 
 ## Commandes utiles
 
@@ -92,7 +90,7 @@ package.json
 
 Le projet est prêt pour Vercel, Netlify ou tout hébergeur compatible Next.js.
 Lancer `pnpm build` avant publication pour vérifier la version production.
-Pour Vercel, renseigner les variables Brevo côté serveur avant le premier
+Pour Vercel, renseigner les variables Resend côté serveur avant le premier
 déploiement.
 
 ## Note

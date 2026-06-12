@@ -550,6 +550,11 @@ details.reasonCard p {
   font-weight: 900;
 }
 
+.muted {
+  color: var(--muted);
+  font-weight: 700;
+}
+
 .contactForm input,
 .contactForm select,
 .contactForm textarea {
@@ -585,6 +590,7 @@ details.reasonCard p {
 
 .formNotice,
 .formError,
+.formHelp,
 .printNote,
 .asideNote {
   border-radius: 18px;
@@ -605,11 +611,30 @@ details.reasonCard p {
   font-weight: 800;
 }
 
+.formHelp {
+  margin: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 0;
+}
+
 .pageHero {
   width: min(980px, calc(100% - 28px));
   margin: 0 auto;
   padding: 118px 0 44px;
   text-align: center;
+}
+
+.thankYouHero {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+}
+
+.thankYouHero svg {
+  color: var(--rose-gold);
 }
 
 .compactHero {

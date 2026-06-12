@@ -16,32 +16,19 @@ de communication prêts à l’emploi.
 
 ```bash
 pnpm install
-pnpm add resend
 pnpm dev
 ```
 
 Ouvrir ensuite `http://localhost:3000`.
 
-## Variables d’environnement
+## Formulaire de contact
 
-Créer un fichier `.env.local` en local et ajouter les mêmes variables dans
-Vercel, section `Project Settings > Environment Variables`.
+Le formulaire envoie les demandes via FormSubmit vers
+`contact.studio.vcreation@gmail.com`, sans API interne et sans clé secrète.
 
-```bash
-RESEND_API_KEY=
-RESEND_FROM_EMAIL="Studio V Creation <onboarding@resend.dev>"
-CONTACT_RECEIVER_EMAIL=contact.studio.vcreation@gmail.com
-```
-
-- `RESEND_API_KEY` : clé API Resend.
-- `RESEND_FROM_EMAIL` : adresse expéditrice. Utiliser `Studio V Creation <onboarding@resend.dev>` pour tester, puis remplacer par une adresse de domaine validée dans Resend.
-- `CONTACT_RECEIVER_EMAIL` : adresse qui reçoit les demandes de devis.
-
-Important : `onboarding@resend.dev` est réservé aux tests. Pour envoyer vers
-une autre adresse que celle du compte Resend, valider un domaine dans Resend
-et utiliser une adresse expéditrice liée à ce domaine.
-
-La clé Resend reste uniquement côté serveur dans `app/api/contact/route.ts`.
+Au premier envoi, FormSubmit demande une confirmation par e-mail sur
+`contact.studio.vcreation@gmail.com`. Après confirmation, les demandes arrivent
+directement dans cette boîte mail.
 
 ## Commandes utiles
 
@@ -56,7 +43,6 @@ pnpm start
 
 ```text
 app/
-  api/contact/route.ts
   a-propos/page.tsx
   contact/page.tsx
   portfolio/page.tsx
@@ -78,7 +64,6 @@ lib/
 public/
   images/studio-v-hero.png
   images/studio-v-portfolio.png
-.env.example
 package.json
 ```
 
@@ -94,8 +79,6 @@ package.json
 
 Le projet est prêt pour Vercel, Netlify ou tout hébergeur compatible Next.js.
 Lancer `pnpm build` avant publication pour vérifier la version production.
-Pour Vercel, renseigner les variables Resend côté serveur avant le premier
-déploiement.
 
 ## Note
 

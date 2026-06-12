@@ -29,13 +29,17 @@ Vercel, section `Project Settings > Environment Variables`.
 
 ```bash
 RESEND_API_KEY=
-RESEND_FROM_EMAIL="Studio V Creation <noreply@studiovcreation.fr>"
+RESEND_FROM_EMAIL="Studio V Creation <onboarding@resend.dev>"
 CONTACT_RECEIVER_EMAIL=contact.studio.vcreation@gmail.com
 ```
 
 - `RESEND_API_KEY` : clé API Resend.
-- `RESEND_FROM_EMAIL` : adresse expéditrice validée dans Resend.
+- `RESEND_FROM_EMAIL` : adresse expéditrice. Utiliser `Studio V Creation <onboarding@resend.dev>` pour tester, puis remplacer par une adresse de domaine validée dans Resend.
 - `CONTACT_RECEIVER_EMAIL` : adresse qui reçoit les demandes de devis.
+
+Important : `onboarding@resend.dev` est réservé aux tests. Pour envoyer vers
+une autre adresse que celle du compte Resend, valider un domaine dans Resend
+et utiliser une adresse expéditrice liée à ce domaine.
 
 La clé Resend reste uniquement côté serveur dans `app/api/contact/route.ts`.
 

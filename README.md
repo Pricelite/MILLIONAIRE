@@ -1,40 +1,100 @@
-# DevisPro AI (Starter MVP)
+# Studio V. Création
 
-Application SaaS moderne pour artisans:
-"Decris ton chantier. L'IA cree ton devis."
+Site internet professionnel complet pour Studio V. Création, studio de supports
+de communication prêts à l’emploi.
 
-## Demarrage
+## Pages incluses
+
+- Accueil avec bannière, slogan, services, arguments, témoignages et formulaire.
+- Services avec détail, avantages, délais et tarifs indicatifs.
+- Tarifs avec prestations à la carte, packs et mention impression.
+- Portfolio avec galerie moderne et emplacements pour futures créations.
+- À propos avec histoire, mission et valeurs.
+- Contact avec formulaire, e-mail et liens réseaux sociaux.
+
+## Installation
 
 ```bash
 pnpm install
-cp .env.example .env.local
+pnpm add @getbrevo/brevo
 pnpm dev
 ```
 
-## Variables d'environnement
+Ouvrir ensuite `http://localhost:3000`.
 
-- `NEXT_PUBLIC_SUPABASE_URL`
-- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-- `SUPABASE_SERVICE_ROLE_KEY`
-- `OPENAI_API_KEY`
-- `OPENAI_MODEL` (par defaut `gpt-4.1-mini`)
-- `STRIPE_SECRET_KEY`
-- `STRIPE_WEBHOOK_SECRET`
-- `ENFORCE_API_AUTH` (`true` en production recommande)
+## Variables d’environnement
 
-## Schema SQL
+Créer un fichier `.env.local` en local et ajouter les mêmes variables dans
+Vercel, section `Project Settings > Environment Variables`.
 
-Importer `supabase/schema.sql` dans Supabase SQL Editor.
+```bash
+BREVO_API_KEY=
+BREVO_SENDER_EMAIL=
+BREVO_SENDER_NAME="Studio V. Création"
+CONTACT_RECEIVER_EMAIL=
+```
 
-## Endpoints MVP
+- `BREVO_API_KEY` : clé API Brevo Transactional Email.
+- `BREVO_SENDER_EMAIL` : adresse expéditrice validée dans Brevo.
+- `BREVO_SENDER_NAME` : nom affiché comme expéditeur.
+- `CONTACT_RECEIVER_EMAIL` : adresse qui reçoit les demandes de devis.
 
-- `POST /api/quotes/generate`
-  - input:
-  ```json
-  { "description": "Pose carrelage salle de bain 12m2", "region": "fr_standard" }
-  ```
-  - output: devis structure avec lignes, TVA, marge, total TTC
+La clé Brevo reste uniquement côté serveur dans `app/api/contact/route.ts`.
 
-## Docs produit
+## Commandes utiles
 
-- [Blueprint complet](docs/MASTER_PLAN.md)
+```bash
+pnpm lint
+pnpm typecheck
+pnpm build
+pnpm start
+```
+
+## Arborescence principale
+
+```text
+app/
+  api/contact/route.ts
+  a-propos/page.tsx
+  contact/page.tsx
+  portfolio/page.tsx
+  services/page.tsx
+  tarifs/page.tsx
+  layout.tsx
+  page.tsx
+  robots.ts
+  sitemap.ts
+components/
+  contact-form.tsx
+  quote-cta.tsx
+  section-heading.tsx
+  site-footer.tsx
+  site-header.tsx
+lib/
+  seo.tsx
+  site-data.ts
+public/
+  images/studio-v-hero.png
+  images/studio-v-portfolio.png
+.env.example
+package.json
+```
+
+## Modifier les contenus
+
+- Les textes, tarifs, packs, témoignages et liens sociaux sont dans `lib/site-data.ts`.
+- La page d’accueil est dans `app/page.tsx`.
+- Les pages internes sont dans `app/services`, `app/tarifs`, `app/portfolio`, `app/a-propos` et `app/contact`.
+- Les styles sont dans `app/globals.css`.
+- Les visuels sont dans `public/images`.
+
+## Mise en ligne
+
+Le projet est prêt pour Vercel, Netlify ou tout hébergeur compatible Next.js.
+Lancer `pnpm build` avant publication pour vérifier la version production.
+Pour Vercel, renseigner les variables Brevo côté serveur avant le premier
+déploiement.
+
+## Note
+
+Impression non incluse dans les tarifs affichés.

@@ -11,3 +11,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route.path === "/" ? 1 : route.path === "/contact" ? 0.9 : 0.8
   }));
 }
+

@@ -11,7 +11,7 @@ const legalPageJsonLd = {
   "@type": "WebPage",
   name: "Mentions légales",
   description:
-    "Mentions légales du site Studio V. Création : éditeur, hébergeur, propriété intellectuelle, données personnelles et contact.",
+    "Mentions légales du site Studio V Creation : éditeur, hébergeur, propriété intellectuelle, données personnelles et contact.",
   url: `${siteUrl}/mentions-legales`,
   inLanguage: "fr-FR"
 };
@@ -210,7 +210,7 @@ export default function MentionsLegalesPage() {
               <a href={`mailto:${legalInfo.email}`}> {legalInfo.email}</a>.
             </p>
             <Link href="/contact" className="button secondary">
-              Contacter Studio V. Création
+              Contacter Studio V Creation
               <ArrowRight size={18} aria-hidden="true" />
             </Link>
           </article>
@@ -219,3 +219,4 @@ export default function MentionsLegalesPage() {
     </>
   );
 }
+

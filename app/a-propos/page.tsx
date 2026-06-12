@@ -8,9 +8,9 @@ export const metadata = createPageMetadata("aPropos");
 const aboutJsonLd = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  name: "À propos de Studio V. Création",
+  name: "À propos de Studio V Creation",
   description:
-    "Histoire, mission et valeurs de Studio V. Création, studio de supports de communication prêts à l’emploi.",
+    "Histoire, mission et valeurs de Studio V Creation, studio de supports de communication prêts à l’emploi.",
   url: `${siteUrl}/a-propos`,
   inLanguage: "fr-FR"
 };
@@ -49,7 +49,7 @@ export default function AboutPage() {
         <p className="eyebrow">À propos</p>
         <h1>Une image plus professionnelle, accessible aux petites structures.</h1>
         <p>
-          Studio V. Création est né d’une envie simple : aider les commerces,
+          Studio V Creation est né d’une envie simple : aider les commerces,
           artisans, indépendants et associations à communiquer avec des supports
           beaux, clairs et prêts à l’emploi.
         </p>
@@ -59,14 +59,14 @@ export default function AboutPage() {
         <div>
           <SectionHeading
             eyebrow="Mon histoire"
-            title="J’ai créé Studio V. Création pour simplifier la communication visuelle."
+            title="J’ai créé Studio V Creation pour simplifier la communication visuelle."
           />
         </div>
         <div className="richText">
           <p>
             Beaucoup de petites entreprises savent quoi vendre, mais manquent de
             temps ou d’outils pour présenter leurs offres avec une image
-            professionnelle. Studio V. Création répond à ce besoin avec des
+            professionnelle. Studio V Creation répond à ce besoin avec des
             supports simples, élégants et directement utilisables.
           </p>
           <p>
@@ -105,3 +105,4 @@ export default function AboutPage() {
     </>
   );
 }
+

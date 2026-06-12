@@ -100,7 +100,7 @@ const premiumFaq = [
   {
     question: "L’impression est-elle incluse ?",
     answer:
-      "Non. Studio V. Création fournit les fichiers numériques. L’impression peut ensuite être réalisée auprès de l’imprimeur de votre choix."
+      "Non. Studio V Creation fournit les fichiers numériques. L’impression peut ensuite être réalisée auprès de l’imprimeur de votre choix."
   }
 ];
 
@@ -164,7 +164,7 @@ export default function Home() {
         <div className="richText">
           <p>
             Les petites structures ont besoin de supports beaux, clairs et
-            rapides à utiliser. Studio V. Création simplifie cette étape avec
+            rapides à utiliser. Studio V Creation simplifie cette étape avec
             une direction visuelle féminine chic, moderne et professionnelle.
           </p>
           <p>
@@ -267,7 +267,7 @@ export default function Home() {
         </div>
         <Image
           src="/images/studio-v-portfolio.png"
-          alt="Portfolio premium de supports de communication Studio V. Création"
+          alt="Portfolio premium de supports de communication Studio V Creation"
           width={720}
           height={720}
           className="portfolioImage"
@@ -370,3 +370,4 @@ export default function Home() {
     </>
   );
 }
+

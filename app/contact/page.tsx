@@ -10,7 +10,7 @@ export const metadata = createPageMetadata("contact");
 const contactJsonLd = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  name: "Contact Studio V. Création",
+  name: "Contact Studio V Creation",
   description:
     "Page de contact pour demander un devis de création de supports de communication.",
   url: `${siteUrl}/contact`,
@@ -90,3 +90,4 @@ export default function ContactPage() {
     </>
   );
 }
+

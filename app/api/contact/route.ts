@@ -159,7 +159,7 @@ function buildEmailHtml({ name, email, need, message }: ContactData) {
 
   return `
     <div style="font-family: Arial, sans-serif; color: #2f2a2c; line-height: 1.6;">
-      <h1 style="color: #8b554f;">Nouvelle demande Studio V. Création</h1>
+      <h1 style="color: #8b554f;">Nouvelle demande Studio V Creation</h1>
       <p><strong>Nom / entreprise :</strong> ${safeName}</p>
       <p><strong>E-mail :</strong> ${safeEmail}</p>
       <p><strong>Type de besoin :</strong> ${safeNeed}</p>
@@ -171,7 +171,7 @@ function buildEmailHtml({ name, email, need, message }: ContactData) {
 
 function buildEmailText({ name, email, need, message }: ContactData) {
   return [
-    "Nouvelle demande depuis le site Studio V. Création",
+    "Nouvelle demande depuis le site Studio V Creation",
     "",
     `Nom / entreprise : ${name}`,
     `E-mail : ${email}`,
@@ -232,7 +232,7 @@ export async function POST(request: Request) {
       from: fromEmail,
       to: [toEmail],
       replyTo: email,
-      subject: `Nouvelle demande Studio V. Création - ${need}`,
+      subject: `Nouvelle demande Studio V Creation - ${need}`,
       text: buildEmailText(validation.data),
       html: buildEmailHtml(validation.data),
       tags: [
@@ -273,3 +273,4 @@ export async function POST(request: Request) {
     );
   }
 }
+

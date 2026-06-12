@@ -7,8 +7,8 @@ export function SiteFooter() {
     <footer className="siteFooter">
       <div>
         <Link href="/" className="brandMark footerBrand" aria-label={company.name}>
-          <span>Studio V.</span>
-          <strong>Création</strong>
+          <span>Studio V</span>
+          <strong>Creation</strong>
         </Link>
         <p>{company.description}</p>
       </div>
@@ -45,3 +45,4 @@ export function SiteFooter() {
     </footer>
   );
 }
+

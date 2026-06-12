@@ -13,3 +13,4 @@ export function SectionHeading({ eyebrow, title, text }: SectionHeadingProps) {
     </div>
   );
 }
+

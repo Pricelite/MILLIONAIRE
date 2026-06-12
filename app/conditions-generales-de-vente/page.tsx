@@ -11,7 +11,7 @@ const cgvJsonLd = {
   "@type": "WebPage",
   name: "Conditions Générales de Vente",
   description:
-    "Conditions Générales de Vente applicables aux prestations de communication graphique proposées par Studio V. Création.",
+    "Conditions Générales de Vente applicables aux prestations de communication graphique proposées par Studio V Creation.",
   url: `${siteUrl}/conditions-generales-de-vente`,
   inLanguage: "fr-FR"
 };
@@ -430,3 +430,4 @@ export default function ConditionsGeneralesDeVentePage() {
     </>
   );
 }
+

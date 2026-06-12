@@ -1,6 +1,6 @@
-# Studio V. Création
+# Studio V Creation
 
-Site internet professionnel complet pour Studio V. Création, studio de supports
+Site internet professionnel complet pour Studio V Creation, studio de supports
 de communication prêts à l’emploi.
 
 ## Pages incluses
@@ -29,7 +29,7 @@ Vercel, section `Project Settings > Environment Variables`.
 
 ```bash
 RESEND_API_KEY=
-RESEND_FROM_EMAIL="Studio V. Création <noreply@studiovcreation.fr>"
+RESEND_FROM_EMAIL="Studio V Creation <noreply@studiovcreation.fr>"
 CONTACT_RECEIVER_EMAIL=contact.studio.vcreation@gmail.com
 ```
 
@@ -96,3 +96,4 @@ déploiement.
 ## Note
 
 Impression non incluse dans les tarifs affichés.
+

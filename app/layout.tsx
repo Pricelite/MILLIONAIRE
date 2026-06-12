@@ -13,34 +13,34 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  applicationName: "Studio V. Création",
+  applicationName: "Studio V Creation",
   title: {
-    default: "Studio V. Création | Je crée, vous publiez.",
-    template: "%s | Studio V. Création"
+    default: "Studio V Creation | Je crée, vous publiez.",
+    template: "%s | Studio V Creation"
   },
   description:
     "Studio de création de supports de communication prêts à l’emploi pour commerçants, artisans, indépendants, associations et petites entreprises.",
   keywords: [
-    "Studio V Création",
+    "Studio V Creation",
     "création publications Instagram",
     "flyer professionnel",
     "carte de fidélité",
     "communication commerçant",
     "supports de communication"
   ],
-  authors: [{ name: "Studio V. Création", url: siteUrl }],
-  creator: "Studio V. Création",
-  publisher: "Studio V. Création",
+  authors: [{ name: "Studio V Creation", url: siteUrl }],
+  creator: "Studio V Creation",
+  publisher: "Studio V Creation",
   category: "Création graphique et communication",
   alternates: {
     canonical: "/"
   },
   openGraph: {
-    title: "Studio V. Création | Je crée, vous publiez.",
+    title: "Studio V Creation | Je crée, vous publiez.",
     description:
       "Supports de communication prêts à l’emploi pour commerçants, artisans, indépendants et associations.",
     url: siteUrl,
-    siteName: "Studio V. Création",
+    siteName: "Studio V Creation",
     locale: "fr_FR",
     type: "website",
     images: [
@@ -48,13 +48,13 @@ export const metadata: Metadata = {
         url: defaultOgImage,
         width: 1200,
         height: 630,
-        alt: "Studio V. Création - supports de communication prêts à publier"
+        alt: "Studio V Creation - supports de communication prêts à publier"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Studio V. Création | Je crée, vous publiez.",
+    title: "Studio V Creation | Je crée, vous publiez.",
     description:
       "Création de publications, flyers, cartes, menus, logos simples et supports prêts à l’emploi.",
     images: [defaultOgImage]
@@ -95,3 +95,4 @@ export default function RootLayout({
     </html>
   );
 }
+

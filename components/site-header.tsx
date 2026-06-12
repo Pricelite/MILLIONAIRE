@@ -21,8 +21,8 @@ export function SiteHeader() {
   return (
     <header className="siteHeader">
       <Link href="/" className="brandMark" aria-label={company.name}>
-        <span>Studio V.</span>
-        <strong>Création</strong>
+        <span>Studio V</span>
+        <strong>Creation</strong>
       </Link>
 
       {/* Navigation principale visible sur desktop et compacte sur mobile. */}
@@ -74,3 +74,4 @@ export function SiteHeader() {
     </header>
   );
 }
+

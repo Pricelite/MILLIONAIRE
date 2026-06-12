@@ -10,7 +10,7 @@ export const metadata = createPageMetadata("portfolio");
 const portfolioJsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "Portfolio Studio V. Création",
+  name: "Portfolio Studio V Creation",
   description:
     "Galerie de créations graphiques : publications, flyers, cartes de fidélité, affiches et logos.",
   url: `${siteUrl}/portfolio`,
@@ -41,7 +41,7 @@ export default function PortfolioPage() {
       <section className="section portfolioLayout">
         <Image
           src="/images/studio-v-portfolio.png"
-          alt="Mockup de supports de communication Studio V. Création"
+          alt="Mockup de supports de communication Studio V Creation"
           width={900}
           height={900}
           className="portfolioHeroImage"
@@ -80,3 +80,4 @@ export default function PortfolioPage() {
     </>
   );
 }
+

@@ -17,7 +17,7 @@ import {
 
 // Contenus centralisés pour modifier le site sans chercher dans chaque page.
 export const company = {
-  name: "Studio V. Création",
+  name: "Studio V Creation",
   slogan: "Je crée, vous publiez.",
   email: "contact.studio.vcreation@gmail.com",
   instagram: "https://www.instagram.com/studiovcreation",
@@ -26,12 +26,12 @@ export const company = {
   x: "https://x.com/studiovcreation",
   linkedin: "https://www.linkedin.com/company/studio-v-creation",
   description:
-    "Studio V. Création accompagne les commerçants, artisans, indépendants, associations et petites entreprises dans la création de supports de communication prêts à l’emploi."
+    "Studio V Creation accompagne les commerçants, artisans, indépendants, associations et petites entreprises dans la création de supports de communication prêts à l’emploi."
 };
 
 // Zones à modifier avant publication des mentions légales.
 export const legalInfo = {
-  ownerName: "Studio V. Création",
+  ownerName: "Studio V Creation",
   legalStatus: "Entreprise individuelle / micro-entreprise",
   address: "19 rue de la Tuilerie, 45240 La Ferté-Saint-Aubin, France",
   phone: "07 84 14 97 13",
@@ -291,7 +291,7 @@ export const portfolioItems = [
 export const testimonials = [
   {
     quote:
-      "Studio V. Création a donné une vraie cohérence à mes publications. Je gagne du temps et mon salon paraît beaucoup plus professionnel.",
+      "Studio V Creation a donné une vraie cohérence à mes publications. Je gagne du temps et mon salon paraît beaucoup plus professionnel.",
     author: "Mélissa R.",
     role: "Coiffeuse indépendante"
   },
@@ -331,3 +331,4 @@ export const reasons = [
     text: "Vous savez quoi fournir, ce qui sera livré et dans quel délai."
   }
 ];
+

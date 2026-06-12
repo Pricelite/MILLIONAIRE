@@ -24,11 +24,11 @@ type PageSeo = {
 export const pageSeo: Record<PageKey, PageSeo> = {
   home: {
     path: "/",
-    title: "Studio V. Création | Supports de communication prêts à publier",
+    title: "Studio V Creation | Supports de communication prêts à publier",
     description:
-      "Studio V. Création crée des publications, flyers, cartes, menus, logos simples et supports prêts à l’emploi pour commerçants, artisans, indépendants et associations.",
+      "Studio V Creation crée des publications, flyers, cartes, menus, logos simples et supports prêts à l’emploi pour commerçants, artisans, indépendants et associations.",
     keywords: [
-      "Studio V Création",
+      "Studio V Creation",
       "supports de communication",
       "création publication Instagram",
       "création flyer professionnel",
@@ -40,7 +40,7 @@ export const pageSeo: Record<PageKey, PageSeo> = {
     path: "/services",
     title: "Services de création graphique pour commerçants et artisans",
     description:
-      "Découvrez les services Studio V. Création : publications réseaux sociaux, stories, cartes de fidélité, cartes cadeaux, flyers, affiches, menus, logos et bannières Facebook.",
+      "Découvrez les services Studio V Creation : publications réseaux sociaux, stories, cartes de fidélité, cartes cadeaux, flyers, affiches, menus, logos et bannières Facebook.",
     keywords: [
       "création visuels réseaux sociaux",
       "création story Instagram",
@@ -54,7 +54,7 @@ export const pageSeo: Record<PageKey, PageSeo> = {
     path: "/tarifs",
     title: "Tarifs création graphique | Packs dès 49 €",
     description:
-      "Consultez les tarifs Studio V. Création : publication dès 10 €, story dès 5 €, flyer 25 €, logo simple 50 € et packs communication dès 49 €. Impression non incluse.",
+      "Consultez les tarifs Studio V Creation : publication dès 10 €, story dès 5 €, flyer 25 €, logo simple 50 € et packs communication dès 49 €. Impression non incluse.",
     keywords: [
       "tarif création flyer",
       "prix publication Instagram",
@@ -68,7 +68,7 @@ export const pageSeo: Record<PageKey, PageSeo> = {
     path: "/portfolio",
     title: "Portfolio créations graphiques | Réseaux sociaux, flyers et logos",
     description:
-      "Parcourez le portfolio Studio V. Création : exemples de publications, flyers, cartes de fidélité, affiches, logos simples et supports de communication.",
+      "Parcourez le portfolio Studio V Creation : exemples de publications, flyers, cartes de fidélité, affiches, logos simples et supports de communication.",
     keywords: [
       "portfolio création graphique",
       "exemples publications Instagram",
@@ -79,11 +79,11 @@ export const pageSeo: Record<PageKey, PageSeo> = {
   },
   aPropos: {
     path: "/a-propos",
-    title: "À propos de Studio V. Création",
+    title: "À propos de Studio V Creation",
     description:
-      "Découvrez l’histoire, la mission et les valeurs de Studio V. Création, studio de supports de communication premium pour petites structures.",
+      "Découvrez l’histoire, la mission et les valeurs de Studio V Creation, studio de supports de communication premium pour petites structures.",
     keywords: [
-      "à propos Studio V Création",
+      "à propos Studio V Creation",
       "studio communication France",
       "création supports petites entreprises",
       "communication visuelle artisans"
@@ -91,12 +91,12 @@ export const pageSeo: Record<PageKey, PageSeo> = {
   },
   contact: {
     path: "/contact",
-    title: "Contact et demande de devis | Studio V. Création",
+    title: "Contact et demande de devis | Studio V Creation",
     description:
-      "Contactez Studio V. Création pour une demande de devis : publications, flyers, affiches, cartes, menus, logos simples et packs communication.",
+      "Contactez Studio V Creation pour une demande de devis : publications, flyers, affiches, cartes, menus, logos simples et packs communication.",
     keywords: [
       "demande devis graphiste",
-      "contact Studio V Création",
+      "contact Studio V Creation",
       "devis création flyer",
       "devis communication commerçant",
       "création supports de communication France"
@@ -106,21 +106,21 @@ export const pageSeo: Record<PageKey, PageSeo> = {
     path: "/mentions-legales",
     title: "Mentions légales",
     description:
-      "Consultez les mentions légales du site Studio V. Création : éditeur, hébergeur, propriété intellectuelle, données personnelles et contact.",
+      "Consultez les mentions légales du site Studio V Creation : éditeur, hébergeur, propriété intellectuelle, données personnelles et contact.",
     keywords: [
-      "mentions légales Studio V Création",
-      "éditeur site Studio V Création",
-      "hébergeur Studio V Création",
-      "données personnelles Studio V Création"
+      "mentions légales Studio V Creation",
+      "éditeur site Studio V Creation",
+      "hébergeur Studio V Creation",
+      "données personnelles Studio V Creation"
     ]
   },
   cgv: {
     path: "/conditions-generales-de-vente",
     title: "Conditions Générales de Vente",
     description:
-      "Consultez les Conditions Générales de Vente Studio V. Création applicables aux prestations de communication graphique : commande, paiement, délais, modifications, livraison et propriété intellectuelle.",
+      "Consultez les Conditions Générales de Vente Studio V Creation applicables aux prestations de communication graphique : commande, paiement, délais, modifications, livraison et propriété intellectuelle.",
     keywords: [
-      "CGV Studio V Création",
+      "CGV Studio V Creation",
       "conditions générales de vente graphiste",
       "CGV prestations communication graphique",
       "commande supports de communication",
@@ -255,7 +255,7 @@ export function breadcrumbJsonLd(items: Array<{ name: string; path: string }>) {
 export const servicesJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Services Studio V. Création",
+  name: "Services Studio V Creation",
   itemListElement: services.map((service, index) => ({
     "@type": "ListItem",
     position: index + 1,
@@ -280,7 +280,7 @@ export const servicesJsonLd = {
 export const pricesJsonLd = {
   "@context": "https://schema.org",
   "@type": "OfferCatalog",
-  name: "Tarifs Studio V. Création",
+  name: "Tarifs Studio V Creation",
   itemListElement: [
     ...priceItems.map(([name, price]) => ({
       "@type": "Offer",
@@ -297,3 +297,4 @@ export const pricesJsonLd = {
     }))
   ]
 };
+

@@ -637,6 +637,34 @@ details.reasonCard p {
   color: var(--rose-gold);
 }
 
+.virginieThankYouMessage {
+  max-width: 620px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 18px;
+  border: 1px solid rgba(167, 108, 88, 0.2);
+  border-radius: 28px;
+  background: linear-gradient(135deg, #fffaf7, #f8dfd4);
+  box-shadow: 0 18px 45px rgba(63, 42, 33, 0.12);
+  padding: 16px 20px 16px 12px;
+  text-align: left;
+}
+
+.virginieThankYouMessage img {
+  width: auto;
+  height: 118px;
+  object-fit: contain;
+}
+
+.virginieThankYouMessage p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 850;
+  line-height: 1.55;
+}
+
 .compactHero {
   padding-bottom: 20px;
 }
@@ -1495,6 +1523,17 @@ details.reasonCard p {
 
   .siteFooter {
     width: min(100% - 24px, 1180px);
+  }
+
+  .virginieThankYouMessage {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 18px;
+    text-align: center;
+  }
+
+  .virginieThankYouMessage img {
+    height: 104px;
   }
 
   .virginieIA {

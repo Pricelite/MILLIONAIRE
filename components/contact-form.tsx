@@ -15,7 +15,12 @@ export function ContactForm() {
       <input
         type="hidden"
         name="_next"
-        value="https://studiovcreation.fr/merci"
+        value="https://studiovcreation-chi-ochre.vercel.app/merci"
+      />
+      <input
+        type="hidden"
+        name="_url"
+        value="https://studiovcreation-chi-ochre.vercel.app/contact"
       />
       <input type="hidden" name="_captcha" value="false" />
       <input type="hidden" name="_template" value="table" />

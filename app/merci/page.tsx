@@ -5,7 +5,7 @@ import { CheckCircle2 } from "lucide-react";
 export const metadata = {
   title: "Message envoyé | Studio V Creation",
   description:
-    "Confirmation d’envoi du formulaire de contact Studio V Creation."
+    "Confirmation d’envoi et de prise en charge du formulaire de contact Studio V Creation."
 };
 
 export default function MerciPage() {

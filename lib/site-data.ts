@@ -280,14 +280,50 @@ export const packs = [
   }
 ];
 
-// TODO: remplacer ces réalisations de démonstration par des projets réels avant toute utilisation commerciale.
+// TODO: remplacer ou compléter ces exemples par des projets réels avant toute utilisation commerciale.
 export const portfolioItems = [
-  { title: "Publication Instagram", category: "Réseaux sociaux", tone: "Lancement beauté" },
-  { title: "Flyer promotionnel", category: "Print", tone: "Offre commerce local" },
-  { title: "Carte de fidélité", category: "Fidélisation", tone: "Institut chic" },
-  { title: "Affiche événement", category: "Affiche", tone: "Annonce premium" },
-  { title: "Logo simple", category: "Identité", tone: "Auto-entrepreneur" },
-  { title: "Menu snack", category: "Menu", tone: "Lecture rapide" }
+  {
+    title: "Publication Instagram beauté",
+    category: "Réseaux sociaux",
+    tone: "Visuel carré premium pour présenter une offre beauté.",
+    image: "/images/portfolio/portfolio-social-post.webp",
+    alt: "Exemple de publication Instagram premium rose gold pour institut de beauté"
+  },
+  {
+    title: "Flyer boutique locale",
+    category: "Print",
+    tone: "Support promotionnel élégant pour annoncer une ouverture.",
+    image: "/images/portfolio/portfolio-flyer.webp",
+    alt: "Exemple de flyer promotionnel rose gold pour boutique locale"
+  },
+  {
+    title: "Carte de fidélité institut",
+    category: "Fidélisation",
+    tone: "Carte imprimable avec zones tampon et finition raffinée.",
+    image: "/images/portfolio/portfolio-loyalty-card.webp",
+    alt: "Exemple de carte de fidélité rose poudré pour institut"
+  },
+  {
+    title: "Affiche événement premium",
+    category: "Affiche",
+    tone: "Composition verticale pour lancement, soirée ou annonce spéciale.",
+    image: "/images/portfolio/portfolio-event-poster.webp",
+    alt: "Exemple d’affiche événementielle premium rose gold"
+  },
+  {
+    title: "Logo simple et brand board",
+    category: "Identité",
+    tone: "Présentation d’une identité douce avec palette et supports.",
+    image: "/images/portfolio/portfolio-logo-concept.webp",
+    alt: "Exemple de logo simple et planche de marque rose gold"
+  },
+  {
+    title: "Menu café et snack",
+    category: "Menu",
+    tone: "Grille lisible pour prix, catégories et offres de restauration.",
+    image: "/images/portfolio/portfolio-menu.webp",
+    alt: "Exemple de menu café snack imprimable rose poudré"
+  }
 ];
 
 export const testimonials = [

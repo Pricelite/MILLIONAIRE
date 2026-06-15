@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Plus } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 import { JsonLd, breadcrumbJsonLd, createPageMetadata, siteUrl } from "@/lib/seo";
 import { portfolioItems } from "@/lib/site-data";
@@ -12,7 +12,7 @@ const portfolioJsonLd = {
   "@type": "CollectionPage",
   name: "Portfolio Studio V Creation",
   description:
-    "Galerie de créations graphiques : publications, flyers, cartes de fidélité, affiches et logos.",
+    "Galerie d’exemples de créations graphiques : publications, flyers, cartes de fidélité, affiches et logos.",
   url: `${siteUrl}/portfolio`,
   inLanguage: "fr-FR"
 };
@@ -31,47 +31,60 @@ export default function PortfolioPage() {
       />
       <section className="pageHero">
         <p className="eyebrow">Portfolio</p>
-        <h1>Une galerie prête à accueillir vos créations.</h1>
+        <h1>Des exemples de créations prêtes à publier.</h1>
         <p>
-          Les emplacements ci-dessous servent de base propre pour ajouter vos
-          futures publications, flyers, cartes, affiches et logos.
+          Découvrez des visuels d’exemple pour imaginer vos futures
+          publications, flyers, cartes, affiches, logos et menus.
         </p>
       </section>
 
       <section className="section portfolioLayout">
-        <Image
-          src="/images/studio-v-portfolio.webp"
-          alt="Mockup de supports de communication Studio V Creation"
-          width={900}
-          height={900}
-          className="portfolioHeroImage"
-        />
+        <aside className="portfolioIntroCard">
+          <Image
+            src="/images/studio-v-portfolio.webp"
+            alt="Mockup de supports de communication Studio V Creation"
+            width={900}
+            height={900}
+            className="portfolioHeroImage"
+          />
+          <div className="portfolioIntroText">
+            <p className="eyebrow">Créations sur mesure</p>
+            <h2>Virginie transforme vos idées en supports prêts à utiliser.</h2>
+            <p>
+              Publications pour les réseaux sociaux, flyers, cartes de fidélité,
+              menus, affiches ou logo simple : chaque visuel est pensé pour
+              valoriser votre activité, présenter clairement votre offre et vous
+              faire gagner du temps.
+            </p>
+          </div>
+        </aside>
 
         <div className="portfolioGallery">
-          {/* TODO: remplacer ces réalisations de démonstration par des projets réels avant toute utilisation commerciale. */}
-          {portfolioItems.map((item, index) => (
+          {/* TODO: remplacer ou compléter ces exemples par des projets réels avant toute utilisation commerciale. */}
+          {portfolioItems.map((item) => (
             <article className="portfolioTile" key={item.title}>
-              <div className={`mockup mockup${index + 1}`}>
-                <span>{item.category}</span>
+              <div className="portfolioThumb">
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  fill
+                  sizes="(max-width: 640px) calc(100vw - 24px), (max-width: 980px) 50vw, 340px"
+                />
               </div>
-              <h2>{item.title}</h2>
-              <p>{item.tone}</p>
+              <div className="portfolioTileBody">
+                <span className="portfolioCategory">{item.category}</span>
+                <h2>{item.title}</h2>
+                <p>{item.tone}</p>
+              </div>
             </article>
           ))}
-          <article className="portfolioTile addTile">
-            <div className="mockup emptyMockup">
-              <Plus size={28} aria-hidden="true" />
-            </div>
-            <h2>Nouvelle création</h2>
-            <p>Emplacement prévu pour ajouter un prochain visuel.</p>
-          </article>
         </div>
       </section>
 
       <section className="section centeredSection">
         <SectionHeading
           eyebrow="Votre projet"
-          title="Ajoutons bientôt vos supports dans cette galerie."
+          title="Créons un visuel adapté à votre activité."
         />
         <Link href="/contact" className="button primary">
           Demander une création

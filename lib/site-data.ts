@@ -280,6 +280,7 @@ export const packs = [
   }
 ];
 
+// TODO: remplacer ces réalisations de démonstration par des projets réels avant toute utilisation commerciale.
 export const portfolioItems = [
   { title: "Publication Instagram", category: "Réseaux sociaux", tone: "Lancement beauté" },
   { title: "Flyer promotionnel", category: "Print", tone: "Offre commerce local" },

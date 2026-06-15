@@ -48,6 +48,7 @@ export default function PortfolioPage() {
         />
 
         <div className="portfolioGallery">
+          {/* TODO: remplacer ces réalisations de démonstration par des projets réels avant toute utilisation commerciale. */}
           {portfolioItems.map((item, index) => (
             <article className="portfolioTile" key={item.title}>
               <div className={`mockup mockup${index + 1}`}>

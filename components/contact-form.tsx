@@ -1,12 +1,10 @@
 import { Send } from "lucide-react";
 
-const receiverEmail = "contact.studio.vcreation@gmail.com";
-
 export function ContactForm() {
   return (
     <form
       className="contactForm"
-      action={`https://formsubmit.co/${receiverEmail}`}
+      action="https://formsubmit.co/contact.studio.vcreation@gmail.com"
       method="POST"
     >
       <input
@@ -14,19 +12,19 @@ export function ContactForm() {
         name="_subject"
         value="Nouvelle demande depuis Studio V Creation"
       />
-      <input type="hidden" name="_template" value="table" />
-      <input type="hidden" name="_captcha" value="false" />
       <input
         type="hidden"
         name="_next"
         value="https://studiovcreation.fr/merci"
       />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
       <input type="text" name="_honey" className="honeypot" tabIndex={-1} />
 
       <label>
         Nom
         <input
-          name="Nom"
+          name="nom"
           type="text"
           placeholder="Votre nom"
           autoComplete="name"
@@ -50,7 +48,7 @@ export function ContactForm() {
       <label>
         Téléphone <span className="muted">(optionnel)</span>
         <input
-          name="Téléphone"
+          name="telephone"
           type="tel"
           placeholder="07 84 14 97 13"
           autoComplete="tel"
@@ -59,9 +57,25 @@ export function ContactForm() {
       </label>
 
       <label>
+        Service souhaité
+        <select name="service" required defaultValue="">
+          <option value="" disabled>
+            Choisissez une prestation
+          </option>
+          <option value="Logo">Logo</option>
+          <option value="Identité visuelle">Identité visuelle</option>
+          <option value="Carte de visite">Carte de visite</option>
+          <option value="Flyer ou affiche">Flyer ou affiche</option>
+          <option value="Visuels réseaux sociaux">Visuels réseaux sociaux</option>
+          <option value="Supports imprimés">Supports imprimés</option>
+          <option value="Autre demande">Autre demande</option>
+        </select>
+      </label>
+
+      <label>
         Message
         <textarea
-          name="Message"
+          name="message"
           rows={6}
           placeholder="Décrivez votre demande."
           minLength={10}
@@ -76,7 +90,7 @@ export function ContactForm() {
       </button>
 
       <p className="formHelp">
-        Votre demande sera envoyée à {receiverEmail}.
+        Votre demande sera envoyée à contact.studio.vcreation@gmail.com.
       </p>
     </form>
   );

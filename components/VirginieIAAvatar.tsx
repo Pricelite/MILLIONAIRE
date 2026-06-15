@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useMemo, useState } from "react";
-import { Bot, MessageCircle, Send, X } from "lucide-react";
+import { Send, X } from "lucide-react";
 
 type Message = {
   id: number;
@@ -22,18 +22,11 @@ type QuoteData = {
   email?: string;
 };
 
-const greeting =
-  "Bonjour 👋\n\nJe suis Virginie IA, l'assistante virtuelle de Studio V Creation.\n\nJe peux vous renseigner sur les prestations, vous aider à préparer une demande de devis ou répondre à vos questions.\n\nComment puis-je vous aider aujourd'hui ?";
+const welcomeMessage =
+  "Bonjour 👋 Je suis Virginie IA, l’assistante virtuelle de Studio V Creation. Je peux vous guider, répondre à vos questions et vous aider à préparer votre demande de devis.";
 
 const complexRequestAnswer =
   "Cette demande mérite une étude personnalisée. Je vous invite à transmettre votre demande via le formulaire de contact afin que Virginie puisse vous répondre directement.";
-
-const quickActions = [
-  "Voir les prestations",
-  "Préparer un devis",
-  "Délais de création",
-  "Contacter Virginie"
-];
 
 const stepQuestions: Record<Exclude<QuoteStep, "idle" | "done">, string> = {
   prenom: "Avec plaisir. Pour commencer, quel est votre prénom ?",
@@ -69,7 +62,7 @@ function getQuoteSummary(data: QuoteData) {
     data.budget ? `• Budget indicatif : ${data.budget}` : null,
     data.email ? `• Email : ${data.email}` : null,
     "",
-    "Vous pouvez maintenant copier ces éléments dans le formulaire de contact afin que Virginie puisse vous répondre rapidement."
+    "Vous pouvez copier ces éléments dans le formulaire de contact afin que Virginie puisse vous répondre rapidement."
   ]
     .filter(Boolean)
     .join("\n");
@@ -100,7 +93,7 @@ function getAssistantAnswer(message: string) {
     normalized.includes("identité") ||
     normalized.includes("identite")
   ) {
-    return "Studio V Creation peut vous accompagner sur la création de logo, l’identité visuelle, les cartes de visite, flyers, affiches, supports imprimés, visuels réseaux sociaux, contenus visuels, supports marketing et conseils en image de marque.";
+    return "Studio V Creation accompagne les entrepreneurs, artisans, indépendants, associations et petites entreprises sur leurs logos, identités visuelles, cartes de visite, flyers, affiches, supports imprimés et visuels réseaux sociaux.";
   }
 
   if (
@@ -109,7 +102,7 @@ function getAssistantAnswer(message: string) {
     normalized.includes("budget") ||
     normalized.includes("combien")
   ) {
-    return "Les tarifs dépendent du support, du volume et du niveau de création attendu. Le plus fiable est de préparer une demande de devis avec quelques informations clés, sans annoncer de prix non confirmé.";
+    return "Les tarifs dépendent du support, du volume et du niveau de création attendu. Le plus fiable est de préparer une demande de devis avec quelques informations clés.";
   }
 
   if (
@@ -118,7 +111,7 @@ function getAssistantAnswer(message: string) {
     normalized.includes("urgent") ||
     normalized.includes("quand")
   ) {
-    return "Les délais varient selon le type de support et la disponibilité du planning. Indiquez votre échéance souhaitée dans votre demande afin que Virginie puisse vous répondre précisément.";
+    return "Les délais varient selon le type de support et la disponibilité du planning. Indiquez votre échéance souhaitée dans votre demande pour obtenir une réponse précise.";
   }
 
   if (
@@ -127,7 +120,7 @@ function getAssistantAnswer(message: string) {
     normalized.includes("devis") ||
     normalized.includes("rendez")
   ) {
-    return "Je peux vous aider à structurer votre demande de devis ici, puis vous pourrez l’envoyer via le formulaire de contact du site.";
+    return "Je peux vous aider à préparer votre demande de devis ici, puis vous pourrez l’envoyer via le formulaire de contact du site.";
   }
 
   if (
@@ -139,10 +132,10 @@ function getAssistantAnswer(message: string) {
     return "Bonjour 👋 Comment puis-je vous aider pour votre communication visuelle aujourd’hui ?";
   }
 
-  return "Je peux vous aider sur les prestations de Studio V Creation, la préparation d’un devis ou les questions liées à votre communication visuelle. Pour un autre sujet, je préfère vous orienter vers le formulaire de contact.";
+  return "Je peux vous aider sur les prestations de Studio V Creation, la préparation d’un devis ou les questions liées à votre communication visuelle.";
 }
 
-export function VirginieIaChat() {
+export function VirginieIAAvatar() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [quoteStep, setQuoteStep] = useState<QuoteStep>("idle");
@@ -151,7 +144,7 @@ export function VirginieIaChat() {
     {
       id: 1,
       role: "assistant",
-      content: greeting
+      content: welcomeMessage
     }
   ]);
 
@@ -174,6 +167,7 @@ export function VirginieIaChat() {
   }
 
   function startQuoteFlow() {
+    setIsOpen(true);
     setQuoteStep("prenom");
     addMessage("assistant", stepQuestions.prenom);
   }
@@ -230,10 +224,7 @@ export function VirginieIaChat() {
       return;
     }
 
-    addMessage(
-      "assistant",
-      `${getAssistantAnswer(trimmedValue)}\n\nSouhaitez-vous que je vous aide à préparer votre demande de devis afin que Virginie puisse vous répondre rapidement ?`
-    );
+    addMessage("assistant", getAssistantAnswer(trimmedValue));
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -242,37 +233,28 @@ export function VirginieIaChat() {
   }
 
   return (
-    <div className="virginieChat" aria-live="polite">
+    <aside className="virginieIA" aria-live="polite">
       {isOpen ? (
-        <section className="virginiePanel" role="dialog" aria-label="Virginie IA">
-          <header className="virginieHeader">
-            <div className="virginieIdentity">
-              <Image
-                src="/images/virginie-ia.webp"
-                alt=""
-                width={64}
-                height={96}
-                className="virginieAvatar"
-              />
-              <div>
-                <p>Virginie IA</p>
-                <span>Assistante Studio V Creation</span>
-              </div>
+        <section className="virginieIAPanel" role="dialog" aria-label="Chat Virginie IA">
+          <header className="virginieIAHeader">
+            <div>
+              <p>Virginie IA</p>
+              <span>Assistante virtuelle</span>
             </div>
             <button
               type="button"
-              className="virginieClose"
-              aria-label="Fermer Virginie IA"
+              className="virginieIAClose"
+              aria-label="Fermer le chat Virginie IA"
               onClick={() => setIsOpen(false)}
             >
               <X size={18} aria-hidden="true" />
             </button>
           </header>
 
-          <div className="virginieMessages">
+          <div className="virginieIAMessages">
             {messages.map((message) => (
               <div
-                className={`virginieMessage ${message.role === "visitor" ? "visitor" : "assistant"}`}
+                className={`virginieIAMessage ${message.role === "visitor" ? "visitor" : "assistant"}`}
                 key={message.id}
               >
                 {message.content}
@@ -280,32 +262,25 @@ export function VirginieIaChat() {
             ))}
           </div>
 
-          <div className="virginieQuickActions" aria-label="Actions rapides">
-            {quickActions.map((action) => (
-              <button
-                type="button"
-                key={action}
-                onClick={() =>
-                  action === "Préparer un devis"
-                    ? startQuoteFlow()
-                    : handleVisitorMessage(action)
-                }
-              >
-                {action}
-              </button>
-            ))}
+          <div className="virginieIAActions" aria-label="Actions rapides Virginie IA">
+            <Link href="/services">Voir les prestations</Link>
+            <button type="button" onClick={startQuoteFlow}>
+              Demander un devis
+            </button>
+            <Link href="/portfolio">Voir le portfolio</Link>
+            <Link href="/contact">Contacter Virginie</Link>
           </div>
 
           {hasCompletedQuote ? (
-            <Link className="virginieContactLink" href={contactHref}>
+            <Link className="virginieIAContact" href={contactHref}>
               Ouvrir le formulaire de contact
             </Link>
           ) : null}
 
-          <form className="virginieForm" onSubmit={handleSubmit}>
-            <label htmlFor="virginie-message">Votre message</label>
+          <form className="virginieIAForm" onSubmit={handleSubmit}>
+            <label htmlFor="virginie-ia-message">Votre message</label>
             <input
-              id="virginie-message"
+              id="virginie-ia-message"
               type="text"
               value={input}
               onChange={(event) => setInput(event.target.value)}
@@ -321,24 +296,21 @@ export function VirginieIaChat() {
 
       <button
         type="button"
-        className="virginieLauncher"
-        aria-label="Ouvrir Virginie IA"
+        className="virginieIAAvatarButton"
+        aria-label={isOpen ? "Fermer Virginie IA" : "Ouvrir Virginie IA"}
         aria-expanded={isOpen}
         onClick={() => setIsOpen((currentValue) => !currentValue)}
       >
+        <span className="virginieIASpeech">Bonjour, comment puis-je vous aider ?</span>
         <Image
-          src="/images/virginie-ia.webp"
-          alt=""
-          width={76}
-          height={114}
-          className="virginieLauncherAvatar"
+          src="/images/virginie-ia-avatar.webp"
+          alt="Virginie IA, assistante virtuelle de Studio V Creation"
+          width={595}
+          height={1425}
+          className="virginieIAAvatarImage"
+          priority={false}
         />
-        <span>
-          <MessageCircle size={18} aria-hidden="true" />
-          Virginie IA
-        </span>
-        <Bot size={18} aria-hidden="true" />
       </button>
-    </div>
+    </aside>
   );
 }

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MotionProvider } from "@/components/motion-provider";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { VirginieIaChat } from "@/components/virginie-ia-chat";
+import { VirginieIAAvatar } from "@/components/VirginieIAAvatar";
 import {
   JsonLd,
   defaultOgImage,
@@ -91,7 +91,7 @@ export default function RootLayout({
           <SiteHeader />
           {children}
           <SiteFooter />
-          <VirginieIaChat />
+          <VirginieIAAvatar />
         </MotionProvider>
       </body>
     </html>

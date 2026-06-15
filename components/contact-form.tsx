@@ -1,126 +1,148 @@
 "use client";
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Send } from "lucide-react";
+
+type FormStatus =
+  | {
+      type: "success" | "error";
+      message: string;
+    }
+  | null;
+
+const successMessage =
+  "Merci pour votre message. Votre demande a bien été envoyée. Nous allons traiter votre demande dans les plus brefs délais.";
+
+const errorMessage =
+  "Une erreur est survenue. Merci de réessayer ou de nous contacter directement par email.";
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<FormStatus>(null);
 
-  function handleSubmit() {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     setIsSubmitting(true);
+    setStatus(null);
 
-    window.setTimeout(() => {
-      window.location.href = "/merci";
-    }, 900);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const payload = {
+      nom: String(formData.get("nom") || ""),
+      email: String(formData.get("email") || ""),
+      telephone: String(formData.get("telephone") || ""),
+      service: String(formData.get("service") || ""),
+      message: String(formData.get("message") || "")
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error("Contact request failed");
+      }
+
+      form.reset();
+      setStatus({
+        type: "success",
+        message: successMessage
+      });
+    } catch {
+      setStatus({
+        type: "error",
+        message: errorMessage
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
-    <>
-      <iframe
-        className="formSubmitFrame"
-        name="formsubmit-frame"
-        title="Envoi du formulaire"
-      />
-      <form
-        className="contactForm"
-        action="https://formsubmit.co/contact.studio.vcreation@gmail.com"
-        method="POST"
-        target="formsubmit-frame"
-        onSubmit={handleSubmit}
-      >
+    <form className="contactForm" onSubmit={handleSubmit}>
+      <label>
+        Nom
         <input
-          type="hidden"
-          name="_subject"
-          value="Nouvelle demande depuis Studio V Creation"
+          name="nom"
+          type="text"
+          placeholder="Votre nom"
+          autoComplete="name"
+          maxLength={120}
+          required
         />
+      </label>
+
+      <label>
+        E-mail
         <input
-          type="hidden"
-          name="_next"
-          value="https://studiovcreation-chi-ochre.vercel.app/merci"
+          name="email"
+          type="email"
+          placeholder="vous@email.fr"
+          autoComplete="email"
+          maxLength={180}
+          required
         />
+      </label>
+
+      <label>
+        Téléphone <span className="muted">(optionnel)</span>
         <input
-          type="hidden"
-          name="_url"
-          value="https://studiovcreation-chi-ochre.vercel.app/contact"
+          name="telephone"
+          type="tel"
+          placeholder="07 84 14 97 13"
+          autoComplete="tel"
+          maxLength={30}
         />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="text" name="_honey" className="honeypot" tabIndex={-1} />
+      </label>
 
-        <label>
-          Nom
-          <input
-            name="nom"
-            type="text"
-            placeholder="Votre nom"
-            autoComplete="name"
-            maxLength={120}
-            required
-          />
-        </label>
+      <label>
+        Service souhaité
+        <select name="service" required defaultValue="">
+          <option value="" disabled>
+            Choisissez une prestation
+          </option>
+          <option value="Logo">Logo</option>
+          <option value="Identité visuelle">Identité visuelle</option>
+          <option value="Carte de visite">Carte de visite</option>
+          <option value="Flyer ou affiche">Flyer ou affiche</option>
+          <option value="Visuels réseaux sociaux">Visuels réseaux sociaux</option>
+          <option value="Supports imprimés">Supports imprimés</option>
+          <option value="Autre demande">Autre demande</option>
+        </select>
+      </label>
 
-        <label>
-          E-mail
-          <input
-            name="email"
-            type="email"
-            placeholder="vous@email.fr"
-            autoComplete="email"
-            maxLength={180}
-            required
-          />
-        </label>
+      <label>
+        Message
+        <textarea
+          name="message"
+          rows={6}
+          placeholder="Décrivez votre demande."
+          minLength={10}
+          maxLength={2000}
+          required
+        />
+      </label>
 
-        <label>
-          Téléphone <span className="muted">(optionnel)</span>
-          <input
-            name="telephone"
-            type="tel"
-            placeholder="07 84 14 97 13"
-            autoComplete="tel"
-            maxLength={30}
-          />
-        </label>
+      <button className="button primary" type="submit" disabled={isSubmitting}>
+        {isSubmitting ? "Envoi en cours..." : "Envoyer la demande"}
+        <Send size={17} aria-hidden="true" />
+      </button>
 
-        <label>
-          Service souhaité
-          <select name="service" required defaultValue="">
-            <option value="" disabled>
-              Choisissez une prestation
-            </option>
-            <option value="Logo">Logo</option>
-            <option value="Identité visuelle">Identité visuelle</option>
-            <option value="Carte de visite">Carte de visite</option>
-            <option value="Flyer ou affiche">Flyer ou affiche</option>
-            <option value="Visuels réseaux sociaux">
-              Visuels réseaux sociaux
-            </option>
-            <option value="Supports imprimés">Supports imprimés</option>
-            <option value="Autre demande">Autre demande</option>
-          </select>
-        </label>
-
-        <label>
-          Message
-          <textarea
-            name="message"
-            rows={6}
-            placeholder="Décrivez votre demande."
-            minLength={10}
-            maxLength={2000}
-            required
-          />
-        </label>
-
-        <button className="button primary" type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Envoi en cours..." : "Envoyer la demande"}
-          <Send size={17} aria-hidden="true" />
-        </button>
-
-        <p className="formHelp">
-          Votre demande sera envoyée à contact.studio.vcreation@gmail.com.
+      {status ? (
+        <p className={`formStatus ${status.type}`} role="status" aria-live="polite">
+          {status.message}
         </p>
-      </form>
-    </>
+      ) : null}
+
+      <p className="formHelp">
+        Votre demande sera envoyée à contact.studio.vcreation@gmail.com.
+      </p>
+    </form>
   );
 }

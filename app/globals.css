@@ -542,15 +542,6 @@ details.reasonCard p {
   gap: 14px;
 }
 
-.formSubmitFrame {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  border: 0;
-  opacity: 0;
-  pointer-events: none;
-}
-
 .contactForm label {
   display: grid;
   gap: 8px;
@@ -587,6 +578,25 @@ details.reasonCard p {
   cursor: not-allowed;
   opacity: 0.72;
   transform: none;
+}
+
+.formStatus {
+  border-radius: 18px;
+  padding: 14px 16px;
+  font-weight: 850;
+  line-height: 1.55;
+}
+
+.formStatus.success {
+  border: 1px solid rgba(91, 137, 96, 0.28);
+  background: rgba(91, 137, 96, 0.12);
+  color: #375f3c;
+}
+
+.formStatus.error {
+  border: 1px solid rgba(167, 74, 74, 0.28);
+  background: rgba(167, 74, 74, 0.1);
+  color: #8b3333;
 }
 
 .honeypot {

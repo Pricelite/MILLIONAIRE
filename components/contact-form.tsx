@@ -19,7 +19,7 @@ export function ContactForm() {
       <input
         type="hidden"
         name="_next"
-        value="https://studiovcreation-chi-ochre.vercel.app/merci"
+        value="https://studiovcreation.fr/merci"
       />
       <input type="text" name="_honey" className="honeypot" tabIndex={-1} />
 

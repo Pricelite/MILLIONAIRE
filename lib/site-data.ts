@@ -36,6 +36,7 @@ export const legalInfo = {
   address: "19 rue de la Tuilerie, 45240 La Ferté-Saint-Aubin, France",
   phone: "07 84 14 97 13",
   email: company.email,
+  // TODO: renseigner le SIRET réel avant publication.
   siret: "En attente d’attribution",
   publicationDirector: "Virginie Cassegarin",
   hostingProvider: {

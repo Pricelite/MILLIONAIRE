@@ -293,7 +293,7 @@ export default function Home() {
         <SectionHeading
           eyebrow="Témoignages"
           title="Une expérience pensée pour rassurer autant que pour séduire."
-          text="Des retours clients fictifs pour illustrer le niveau de confiance attendu sur ce type de prestation."
+          text="Exemples de retours clients présentés à titre illustratif."
         />
         <StaggerGroup className="cardGrid threeColumns">
           {testimonials.map((testimonial) => (

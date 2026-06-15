@@ -82,9 +82,6 @@ export default function ContactPage() {
               LinkedIn
             </Link>
           </div>
-          <p className="asideNote">
-            Vérifiez les URLs exactes de vos profils avant la mise en ligne.
-          </p>
         </aside>
       </section>
     </>

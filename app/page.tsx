@@ -116,7 +116,7 @@ export default function Home() {
 
       <section className="hero">
         <Image
-          src="/images/studio-v-hero.png"
+          src="/images/studio-v-hero.webp"
           alt="Supports de communication premium rose poudré et rose gold"
           fill
           priority
@@ -266,7 +266,7 @@ export default function Home() {
           </div>
         </div>
         <Image
-          src="/images/studio-v-portfolio.png"
+          src="/images/studio-v-portfolio.webp"
           alt="Portfolio premium de supports de communication Studio V Creation"
           width={720}
           height={720}

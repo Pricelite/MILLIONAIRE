@@ -40,7 +40,7 @@ export default function PortfolioPage() {
 
       <section className="section portfolioLayout">
         <Image
-          src="/images/studio-v-portfolio.png"
+          src="/images/studio-v-portfolio.webp"
           alt="Mockup de supports de communication Studio V Creation"
           width={900}
           height={900}

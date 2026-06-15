@@ -62,8 +62,8 @@ lib/
   seo.tsx
   site-data.ts
 public/
-  images/studio-v-hero.png
-  images/studio-v-portfolio.png
+  images/studio-v-hero.webp
+  images/studio-v-portfolio.webp
 package.json
 ```
 

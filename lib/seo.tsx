@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { audiences, company, packs, priceItems, services } from "@/lib/site-data";
 
 export const siteUrl = "https://studiovcreation.fr";
-export const defaultOgImage = "/images/studio-v-hero.png";
+export const defaultOgImage = "/images/studio-v-hero.webp";
 
 type PageKey =
   | "home"

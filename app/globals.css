@@ -542,6 +542,15 @@ details.reasonCard p {
   gap: 14px;
 }
 
+.formSubmitFrame {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .contactForm label {
   display: grid;
   gap: 8px;

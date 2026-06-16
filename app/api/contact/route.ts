@@ -121,6 +121,12 @@ export async function POST(request: Request) {
   });
 
   if (!response.ok) {
+    const errorBody = await response.text();
+    console.error("Brevo contact email failed", {
+      status: response.status,
+      body: errorBody
+    });
+
     return NextResponse.json(
       { error: "Erreur lors de l’envoi du message." },
       { status: 502 }

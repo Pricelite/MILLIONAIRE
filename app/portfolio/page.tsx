@@ -60,7 +60,6 @@ export default function PortfolioPage() {
         </aside>
 
         <div className="portfolioGallery">
-          {/* TODO: remplacer ou compléter ces exemples par des projets réels avant toute utilisation commerciale. */}
           {portfolioItems.map((item) => (
             <article className="portfolioTile" key={item.title}>
               <div className="portfolioThumb">

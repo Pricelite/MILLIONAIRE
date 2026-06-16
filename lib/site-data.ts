@@ -23,8 +23,6 @@ export const company = {
   instagram: "https://www.instagram.com/studiovcreation",
   facebook: "https://www.facebook.com/studiovcreation",
   tiktok: "https://www.tiktok.com/@studiovcreation",
-  x: "https://x.com/studiovcreation",
-  linkedin: "https://www.linkedin.com/company/studio-v-creation",
   description:
     "Studio V Creation accompagne les commerçants, artisans, indépendants, associations et petites entreprises dans la création de supports de communication prêts à l’emploi."
 };
@@ -36,8 +34,7 @@ export const legalInfo = {
   address: "19 rue de la Tuilerie, 45240 La Ferté-Saint-Aubin, France",
   phone: "07 84 14 97 13",
   email: company.email,
-  // TODO: renseigner le SIRET réel avant publication.
-  siret: "En attente d’attribution",
+  siret: "En cours d’attribution par l’INSEE",
   publicationDirector: "Virginie Cassegarin",
   hostingProvider: {
     name: "Vercel Inc.",
@@ -280,7 +277,6 @@ export const packs = [
   }
 ];
 
-// TODO: remplacer ou compléter ces exemples par des projets réels avant toute utilisation commerciale.
 export const portfolioItems = [
   {
     title: "Publication Instagram beauté",

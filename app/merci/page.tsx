@@ -3,9 +3,13 @@ import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 
 export const metadata = {
-  title: "Message envoyé | Studio V Creation",
+  title: "Message envoyé",
   description:
-    "Confirmation d’envoi et de prise en charge du formulaire de contact Studio V Creation."
+    "Confirmation d’envoi et de prise en charge du formulaire de contact Studio V Creation.",
+  robots: {
+    index: false,
+    follow: false
+  }
 };
 
 export default function MerciPage() {

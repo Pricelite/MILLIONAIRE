@@ -391,6 +391,10 @@ export default function ConditionsGeneralesDeVentePage() {
               d’effacement ou de limitation en écrivant à
               <a href={`mailto:${legalInfo.email}`}> {legalInfo.email}</a>.
             </p>
+            <Link href="/politique-de-confidentialite" className="button secondary">
+              Lire la politique de confidentialité
+              <ArrowRight size={18} aria-hidden="true" />
+            </Link>
           </article>
 
           <article>

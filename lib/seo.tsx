@@ -12,6 +12,7 @@ type PageKey =
   | "aPropos"
   | "contact"
   | "mentionsLegales"
+  | "confidentialite"
   | "cgv";
 
 type PageSeo = {
@@ -79,7 +80,7 @@ export const pageSeo: Record<PageKey, PageSeo> = {
   },
   aPropos: {
     path: "/a-propos",
-    title: "À propos de Studio V Creation",
+    title: "À propos",
     description:
       "Découvrez l’histoire, la mission et les valeurs de Studio V Creation, studio de supports de communication premium pour petites structures.",
     keywords: [
@@ -91,7 +92,7 @@ export const pageSeo: Record<PageKey, PageSeo> = {
   },
   contact: {
     path: "/contact",
-    title: "Contact et demande de devis | Studio V Creation",
+    title: "Contact et demande de devis",
     description:
       "Contactez Studio V Creation pour une demande de devis : publications, flyers, affiches, cartes, menus, logos simples et packs communication.",
     keywords: [
@@ -112,6 +113,18 @@ export const pageSeo: Record<PageKey, PageSeo> = {
       "éditeur site Studio V Creation",
       "hébergeur Studio V Creation",
       "données personnelles Studio V Creation"
+    ]
+  },
+  confidentialite: {
+    path: "/politique-de-confidentialite",
+    title: "Politique de confidentialité",
+    description:
+      "Consultez la politique de confidentialité de Studio V Creation : données collectées, finalités, durée de conservation, droits RGPD et contact.",
+    keywords: [
+      "politique de confidentialité Studio V Creation",
+      "données personnelles Studio V Creation",
+      "RGPD formulaire contact",
+      "confidentialité devis graphiste"
     ]
   },
   cgv: {
@@ -205,9 +218,7 @@ export const organizationJsonLd = {
   sameAs: [
     company.instagram,
     company.facebook,
-    company.tiktok,
-    company.x,
-    company.linkedin
+    company.tiktok
   ],
   priceRange: "€€",
   knowsAbout: [

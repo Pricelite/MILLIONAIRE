@@ -189,6 +189,10 @@ export default function MentionsLegalesPage() {
               <a href={`mailto:${legalInfo.email}`}> {legalInfo.email}</a>.
               Elle peut également introduire une réclamation auprès de la CNIL.
             </p>
+            <Link href="/politique-de-confidentialite" className="button secondary">
+              Lire la politique de confidentialité
+              <ArrowRight size={18} aria-hidden="true" />
+            </Link>
           </article>
 
           <article>

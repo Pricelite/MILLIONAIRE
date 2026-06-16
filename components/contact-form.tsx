@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 import { Send } from "lucide-react";
 
 type FormStatus =
@@ -10,15 +11,14 @@ type FormStatus =
     }
   | null;
 
-const successMessage =
-  "Merci pour votre message. Votre demande a bien été envoyée. Nous allons traiter votre demande dans les plus brefs délais.";
-
 const errorMessage =
   "Une erreur est survenue. Merci de réessayer ou de nous contacter directement par email.";
 
 export function ContactForm() {
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<FormStatus>(null);
+  const [startedAt, setStartedAt] = useState(() => Date.now());
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -33,7 +33,9 @@ export function ContactForm() {
       email: String(formData.get("email") || ""),
       telephone: String(formData.get("telephone") || ""),
       service: String(formData.get("service") || ""),
-      message: String(formData.get("message") || "")
+      message: String(formData.get("message") || ""),
+      website: String(formData.get("website") || ""),
+      submittedAt: String(formData.get("submittedAt") || "")
     };
 
     try {
@@ -50,10 +52,8 @@ export function ContactForm() {
       }
 
       form.reset();
-      setStatus({
-        type: "success",
-        message: successMessage
-      });
+      setStartedAt(Date.now());
+      router.push("/merci");
     } catch {
       setStatus({
         type: "error",
@@ -66,6 +66,18 @@ export function ContactForm() {
 
   return (
     <form className="contactForm" onSubmit={handleSubmit}>
+      <label className="honeypot" aria-hidden="true">
+        Site web
+        <input
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          inputMode="none"
+        />
+      </label>
+      <input type="hidden" name="submittedAt" value={startedAt} />
+
       <label>
         Nom
         <input

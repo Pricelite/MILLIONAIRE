@@ -91,7 +91,8 @@ export const services = [
       "Message clair pour générer des demandes"
     ],
     delay: "24 à 72 h",
-    price: "à partir de 10 €"
+    price: "à partir de 15 €",
+    priceDetail: "1 visuel carré ou portrait, prêt à publier"
   },
   {
     slug: "stories",
@@ -106,7 +107,8 @@ export const services = [
       "Style premium et professionnel"
     ],
     delay: "24 à 48 h",
-    price: "à partir de 5 €"
+    price: "à partir de 10 €",
+    priceDetail: "1 story verticale prête pour Instagram ou Facebook"
   },
   {
     slug: "cartes-fidelite",
@@ -121,7 +123,8 @@ export const services = [
       "Design cohérent avec votre univers"
     ],
     delay: "2 à 4 jours",
-    price: "20 €"
+    price: "à partir de 35 €",
+    priceDetail: "1 carte recto imprimable, recto-verso sur devis"
   },
   {
     slug: "cartes-cadeaux",
@@ -136,7 +139,8 @@ export const services = [
       "Aspect soigné et rassurant"
     ],
     delay: "2 à 4 jours",
-    price: "20 €"
+    price: "à partir de 35 €",
+    priceDetail: "1 carte cadeau digitale ou imprimable"
   },
   {
     slug: "flyers",
@@ -151,7 +155,8 @@ export const services = [
       "Appel à l’action visible"
     ],
     delay: "3 à 5 jours",
-    price: "25 €"
+    price: "à partir de 45 €",
+    priceDetail: "1 flyer recto, format web ou impression"
   },
   {
     slug: "affiches",
@@ -166,7 +171,8 @@ export const services = [
       "Message visible au premier regard"
     ],
     delay: "3 à 5 jours",
-    price: "25 €"
+    price: "à partir de 45 €",
+    priceDetail: "1 affiche verticale, format web ou impression"
   },
   {
     slug: "cartes-visite",
@@ -181,7 +187,8 @@ export const services = [
       "Fichier prêt à imprimer"
     ],
     delay: "2 à 4 jours",
-    price: "20 €"
+    price: "à partir de 35 €",
+    priceDetail: "1 carte de visite recto, recto-verso sur devis"
   },
   {
     slug: "menus",
@@ -196,7 +203,8 @@ export const services = [
       "Format digital ou imprimable"
     ],
     delay: "3 à 6 jours",
-    price: "35 €"
+    price: "à partir de 60 €",
+    priceDetail: "1 menu simple ou grille tarifaire courte"
   },
   {
     slug: "logos",
@@ -211,7 +219,8 @@ export const services = [
       "Déclinaisons simples possibles"
     ],
     delay: "4 à 7 jours",
-    price: "50 €"
+    price: "à partir de 90 €",
+    priceDetail: "1 logo simple avec fichiers web"
   },
   {
     slug: "bannieres-facebook",
@@ -226,7 +235,8 @@ export const services = [
       "Message d’accueil clair"
     ],
     delay: "24 à 72 h",
-    price: "20 €"
+    price: "à partir de 30 €",
+    priceDetail: "1 couverture Facebook adaptée à votre page"
   }
 ];
 
@@ -239,39 +249,39 @@ export const extraServices = [
 ];
 
 export const priceItems = [
-  ["Publication simple", "10 €"],
-  ["Pack 5 publications", "45 €"],
-  ["Pack 10 publications", "80 €"],
-  ["Story", "5 €"],
-  ["Pack 10 stories", "40 €"],
-  ["Calendrier éditorial", "30 €"],
-  ["Carte de fidélité", "20 €"],
-  ["Carte cadeau", "20 €"],
-  ["Carte de visite", "20 €"],
-  ["Flyer", "25 €"],
-  ["Affiche promotionnelle", "25 €"],
-  ["Menu", "35 €"],
-  ["Logo simple", "50 €"],
-  ["Bannière Facebook", "20 €"],
-  ["Photo de profil", "15 €"]
+  ["Publication simple", "à partir de 15 €", "1 visuel carré ou portrait prêt à publier"],
+  ["Pack 5 publications", "à partir de 65 €", "5 visuels cohérents pour alimenter vos réseaux"],
+  ["Pack 10 publications", "à partir de 120 €", "10 visuels pour préparer une série complète"],
+  ["Story", "à partir de 10 €", "1 story verticale pour annoncer, vendre ou informer"],
+  ["Pack 10 stories", "à partir de 80 €", "10 stories harmonisées pour une campagne ou un lancement"],
+  ["Calendrier éditorial", "à partir de 45 €", "une trame d’idées et de sujets pour organiser vos publications"],
+  ["Carte de fidélité", "à partir de 35 €", "1 carte recto imprimable, recto-verso sur devis"],
+  ["Carte cadeau", "à partir de 35 €", "1 carte cadeau digitale ou imprimable"],
+  ["Carte de visite", "à partir de 35 €", "1 carte recto imprimable, recto-verso sur devis"],
+  ["Flyer", "à partir de 45 €", "1 flyer recto, format web ou impression"],
+  ["Affiche promotionnelle", "à partir de 45 €", "1 affiche verticale, format web ou impression"],
+  ["Menu", "à partir de 60 €", "1 menu simple ou grille tarifaire courte"],
+  ["Logo simple", "à partir de 90 €", "1 logo simple avec fichiers web"],
+  ["Bannière Facebook", "à partir de 30 €", "1 couverture Facebook adaptée à votre page"],
+  ["Photo de profil", "à partir de 20 €", "1 visuel de profil adapté à vos réseaux"]
 ];
 
 export const packs = [
   {
     name: "Pack Découverte",
-    price: "49 €",
+    price: "à partir de 79 €",
     description: "Idéal pour tester une première série de supports.",
     features: ["3 publications", "2 stories", "1 photo de profil", "Mini direction visuelle"]
   },
   {
     name: "Pack Commerçant",
-    price: "99 €",
+    price: "à partir de 149 €",
     description: "Pour une présence locale plus complète et cohérente.",
     features: ["6 publications", "5 stories", "1 flyer ou carte", "Adaptation Facebook"]
   },
   {
     name: "Pack Premium",
-    price: "149 €",
+    price: "à partir de 229 €",
     description: "Pour préparer un lancement ou une communication complète.",
     features: ["10 publications", "10 stories", "1 support imprimable", "Bannière Facebook"]
   }

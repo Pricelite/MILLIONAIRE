@@ -53,9 +53,9 @@ export const pageSeo: Record<PageKey, PageSeo> = {
   },
   tarifs: {
     path: "/tarifs",
-    title: "Tarifs création graphique | Packs dès 49 €",
+    title: "Tarifs création graphique | Packs dès 79 €",
     description:
-      "Consultez les tarifs Studio V Creation : publication dès 10 €, story dès 5 €, flyer 25 €, logo simple 50 € et packs communication dès 49 €. Impression non incluse.",
+      "Consultez les tarifs Studio V Creation : publication dès 15 €, story dès 10 €, flyer dès 45 €, logo simple dès 90 € et packs communication dès 79 €. Impression non incluse.",
     keywords: [
       "tarif création flyer",
       "prix publication Instagram",

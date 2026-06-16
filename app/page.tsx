@@ -2,17 +2,9 @@ import Image from "next/image";
 import {
   ArrowRight,
   CheckCircle2,
-  Clock3,
-  Crown,
-  Gem,
-  MessageCircle,
-  Palette,
-  PenTool,
   Quote,
-  Send,
   Sparkles,
-  Star,
-  Wand2
+  Star
 } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import {
@@ -31,47 +23,9 @@ import {
   createPageMetadata,
   servicesJsonLd
 } from "@/lib/seo";
-import { company, portfolioItems, services, testimonials } from "@/lib/site-data";
+import { company, services, testimonials } from "@/lib/site-data";
 
 export const metadata = createPageMetadata("home");
-
-const stats = [
-  {
-    value: "24-72 h",
-    label: "pour les visuels simples selon le brief et la disponibilité."
-  },
-  {
-    value: "10+",
-    label: "formats de communication pour réseaux sociaux et supports print."
-  },
-  {
-    value: "2",
-    label: "séries de corrections incluses pour affiner le rendu."
-  }
-];
-
-const processSteps = [
-  {
-    icon: MessageCircle,
-    title: "Brief clair",
-    text: "Vous envoyez votre activité, votre besoin, vos textes et vos inspirations."
-  },
-  {
-    icon: Palette,
-    title: "Direction visuelle",
-    text: "Le support prend forme avec une esthétique cohérente, lisible et premium."
-  },
-  {
-    icon: PenTool,
-    title: "Création",
-    text: "Les visuels sont conçus dans les formats adaptés à votre usage final."
-  },
-  {
-    icon: Send,
-    title: "Livraison",
-    text: "Vous recevez des fichiers numériques prêts à publier ou à transmettre."
-  }
-];
 
 const featuredServiceSlugs = [
   "publications-reseaux-sociaux",
@@ -81,6 +35,15 @@ const featuredServiceSlugs = [
   "logos",
   "bannieres-facebook"
 ];
+
+const featuredServiceImages: Record<string, string> = {
+  "publications-reseaux-sociaux": "/images/services/service-publications-reseaux-sociaux.png",
+  stories: "/images/services/service-stories.png",
+  "cartes-fidelite": "/images/services/service-cartes-fidelite.png",
+  flyers: "/images/services/service-flyers.png",
+  logos: "/images/services/service-logos.png",
+  "bannieres-facebook": "/images/services/service-bannieres-facebook.png"
+};
 
 const premiumFaq = [
   {
@@ -109,7 +72,6 @@ export default function Home() {
   const featuredServices = services.filter((service) =>
     featuredServiceSlugs.includes(service.slug)
   );
-  const highlightedPortfolio = portfolioItems.slice(0, 4);
 
   return (
     <>
@@ -149,154 +111,92 @@ export default function Home() {
         </HeroReveal>
       </section>
 
-      <RevealSection className="trustStrip" aria-label="Preuves rapides">
-        <span>Rose poudré</span>
-        <span>Rose gold</span>
-        <span>Mobile first</span>
-        <span>Fichiers numériques</span>
-        <span>Prêt à publier</span>
-      </RevealSection>
-
-      <ProjectInfographic />
-
-      <RevealSection className="section splitSection">
-        <div>
-          <p className="eyebrow">Positionnement</p>
-          <h2>Le studio qui transforme vos idées en supports soignés.</h2>
+      <RevealSection className="section featuredServicesSection">
+        <div className="featuredServicesHeader">
+          <div>
+            <p className="eyebrow">SERVICES VEDETTES</p>
+            <h2>Les essentiels pour une présence plus professionnelle.</h2>
+            <p>
+              Des supports pensés pour annoncer, vendre, fidéliser et harmoniser
+              votre image de marque.
+            </p>
+          </div>
+          <div className="featuredServicesAvatar">
+            <Image
+              src="/images/virginie-ia-avatar.webp"
+              alt=""
+              width={595}
+              height={1425}
+              className="featuredServicesAvatarImage"
+            />
+            <span>Accompagnement personnalisé</span>
+          </div>
         </div>
-        <div className="richText">
-          <p>
-            Les petites structures ont besoin de supports beaux, clairs et
-            rapides à utiliser. Studio V Creation simplifie cette étape avec
-            une direction visuelle féminine chic, moderne et professionnelle.
-          </p>
-          <p>
-            Chaque création est pensée pour inspirer confiance dès les premières
-            secondes, que ce soit sur Instagram, Facebook, TikTok, en vitrine ou
-            dans les mains de vos clients.
-          </p>
-        </div>
-      </RevealSection>
 
-      <RevealSection className="section">
-        <SectionHeading
-          eyebrow="Chiffres clés"
-          title="Une méthode claire pour avancer vite, sans perdre le niveau de détail."
-          text="Des repères simples pour comprendre le rythme, le périmètre et la valeur de chaque création."
-        />
-        <StaggerGroup className="cardGrid threeColumns">
-          {stats.map((stat) => (
-            <MotionCard className="serviceCard" key={stat.value}>
-              <Gem size={24} aria-hidden="true" />
-              <h3>{stat.value}</h3>
-              <p>{stat.label}</p>
-            </MotionCard>
-          ))}
-        </StaggerGroup>
-      </RevealSection>
-
-      <RevealSection className="section blushBand">
-        <SectionHeading
-          eyebrow="Processus"
-          title="Un déroulé simple, élégant et orienté livraison."
-          text="Chaque étape est cadrée pour éviter les allers-retours inutiles et obtenir un support exploitable rapidement."
-        />
-        <StaggerGroup className="cardGrid fourColumns">
-          {processSteps.map((step, index) => {
-            const Icon = step.icon;
-
-            return (
-              <MotionCard className="reasonCard" key={step.title}>
-                <Icon size={24} aria-hidden="true" />
-                <h3>
-                  {String(index + 1).padStart(2, "0")} · {step.title}
-                </h3>
-                <p>{step.text}</p>
-              </MotionCard>
-            );
-          })}
-        </StaggerGroup>
-      </RevealSection>
-
-      <RevealSection className="section">
-        <SectionHeading
-          eyebrow="Services vedettes"
-          title="Les essentiels pour une présence plus professionnelle."
-          text="Des supports pensés pour annoncer, vendre, fidéliser et harmoniser votre image de marque."
-        />
-        <StaggerGroup className="cardGrid threeColumns">
+        <StaggerGroup className="featuredServicesGrid">
           {featuredServices.map((service) => {
             const Icon = service.icon;
 
             return (
-              <MotionCard className="serviceCard" key={service.slug}>
-                <Icon size={24} aria-hidden="true" />
+              <MotionCard className="featuredServiceCard" key={service.slug}>
+                <div className="featuredServiceVisual">
+                  <Image
+                    src={featuredServiceImages[service.slug]}
+                    alt={`Exemple visuel pour ${service.title}`}
+                    fill
+                    className="featuredServiceImage"
+                    sizes="(max-width: 640px) calc(100vw - 72px), (max-width: 980px) calc(50vw - 48px), 360px"
+                  />
+                </div>
+                <div className="featuredServiceMeta">
+                  <span className="featuredServiceIcon">
+                    <Icon size={22} aria-hidden="true" />
+                  </span>
+                  <span className="featuredServicePrice">{service.price}</span>
+                </div>
                 <h3>{service.title}</h3>
                 <p>{service.short}</p>
-                <span>{service.price}</span>
+                <small>{service.priceDetail}</small>
               </MotionCard>
             );
           })}
         </StaggerGroup>
-        <div className="centerAction">
+
+        <MotionCard className="featuredServicesBanner">
+          <div>
+            <p>
+              Des visuels qui vous ressemblent, pensés pour attirer, convaincre
+              et fidéliser.
+            </p>
+            <div className="featuredServicesProofs">
+              <span>
+                <CheckCircle2 size={18} aria-hidden="true" />
+                Design professionnel
+              </span>
+              <span>
+                <CheckCircle2 size={18} aria-hidden="true" />
+                Créations sur-mesure
+              </span>
+              <span>
+                <CheckCircle2 size={18} aria-hidden="true" />
+                Résultats concrets
+              </span>
+            </div>
+          </div>
           <MotionButtonLink href="/services" className="button secondary">
             Explorer tous les services
             <ArrowRight size={18} aria-hidden="true" />
           </MotionButtonLink>
-        </div>
+        </MotionCard>
       </RevealSection>
 
-      <RevealSection className="section portfolioPreview">
-        <div>
-          <SectionHeading
-            eyebrow="Portfolio"
-            title="Une vitrine visuelle pensée comme une collection."
-            text="Mettez en avant vos publications, flyers, cartes, affiches et logos dans une galerie claire et raffinée."
-          />
-          <div className="checkList">
-            {highlightedPortfolio.map((item) => (
-              <span key={item.title}>
-                <CheckCircle2 size={18} aria-hidden="true" />
-                {item.title}
-              </span>
-            ))}
-          </div>
-          <div className="centerAction">
-            <MotionButtonLink href="/portfolio" className="button secondary">
-              Découvrir les créations
-              <ArrowRight size={18} aria-hidden="true" />
-            </MotionButtonLink>
-          </div>
-        </div>
-        <Image
-          src="/images/studio-v-portfolio.webp"
-          alt="Portfolio premium de supports de communication Studio V Creation"
-          width={720}
-          height={720}
-          className="portfolioImage"
-        />
-      </RevealSection>
-
-      <RevealSection className="quoteCta">
-        <div>
-          <p className="eyebrow">Offre stratégique</p>
-          <h2>Votre prochaine campagne peut être prête à publier.</h2>
-          <p>
-            Idéal pour une ouverture, une promotion, une nouvelle prestation ou
-            une reprise de communication plus cohérente.
-          </p>
-        </div>
-        <MotionButtonLink href="/tarifs" className="button light">
-          Voir les tarifs
-          <ArrowRight size={18} aria-hidden="true" />
-        </MotionButtonLink>
-      </RevealSection>
+      <ProjectInfographic />
 
       <RevealSection className="section">
         <SectionHeading
           eyebrow="Témoignages"
-          title="Une expérience pensée pour rassurer autant que pour séduire."
-          text="Exemples de retours clients présentés à titre illustratif."
+          title="Une expérience simple, claire et rassurante."
+          text="Des retours centrés sur l’écoute, la lisibilité et la qualité des supports livrés."
         />
         <StaggerGroup className="cardGrid threeColumns">
           {testimonials.map((testimonial) => (
@@ -307,39 +207,6 @@ export default function Home() {
               <span>{testimonial.role}</span>
             </MotionCard>
           ))}
-        </StaggerGroup>
-      </RevealSection>
-
-      <RevealSection className="section splitSection">
-        <div>
-          <p className="eyebrow">Signature premium</p>
-          <h2>Un style minimaliste qui laisse votre message respirer.</h2>
-        </div>
-        <StaggerGroup className="cardGrid">
-          <MotionCard className="reasonCard">
-            <Crown size={24} aria-hidden="true" />
-            <h3>Féminin chic</h3>
-            <p>
-              Des compositions douces, élégantes et professionnelles, adaptées
-              aux univers beauté, restauration, artisanat et commerce local.
-            </p>
-          </MotionCard>
-          <MotionCard className="reasonCard">
-            <Wand2 size={24} aria-hidden="true" />
-            <h3>Prêt à l’emploi</h3>
-            <p>
-              Les fichiers sont livrés dans des formats utilisables rapidement,
-              sans étape technique supplémentaire côté client.
-            </p>
-          </MotionCard>
-          <MotionCard className="reasonCard">
-            <Clock3 size={24} aria-hidden="true" />
-            <h3>Lisibilité commerciale</h3>
-            <p>
-              Chaque support met en avant une offre, une information ou une
-              action claire pour faciliter la prise de décision.
-            </p>
-          </MotionCard>
         </StaggerGroup>
       </RevealSection>
 

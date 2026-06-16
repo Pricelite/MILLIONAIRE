@@ -18,10 +18,10 @@ export default function MerciPage() {
       <section className="pageHero thankYouHero">
         <div className="eyebrow">Message envoyé</div>
         <CheckCircle2 size={52} aria-hidden="true" />
-        <h1>Votre demande a bien été envoyée.</h1>
+        <h1>Merci, message reçu.</h1>
         <p>
-          Merci pour votre message. Studio V Creation vous répondra directement
-          par e-mail dans les meilleurs délais.
+          Studio V Creation vous répondra directement par e-mail dans les
+          meilleurs délais.
         </p>
         <div className="virginieThankYouMessage">
           <Image
@@ -30,10 +30,7 @@ export default function MerciPage() {
             width={110}
             height={165}
           />
-          <p>
-            Bonjour, votre demande a bien été envoyée. Elle sera traitée dans
-            les plus brefs délais.
-          </p>
+          <p>Votre demande est transmise à Virginie.</p>
         </div>
         <Link className="button primary" href="/">
           Retour à l’accueil

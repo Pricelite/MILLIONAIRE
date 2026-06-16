@@ -49,8 +49,8 @@ export function ProjectInfographic() {
   return (
     <section className="projectInfographicSection" aria-labelledby="project-infographic-title">
       <div className="projectInfographicHeader">
-        <p className="eyebrow">Accompagnement</p>
-        <h2 id="project-infographic-title">Votre projet avec Studio V Creation</h2>
+        <p className="eyebrow">Demande de devis</p>
+        <h2 id="project-infographic-title">Votre projet guidé par Virginie IA</h2>
       </div>
 
       <div className="projectInfographicCanvas" data-export="web">
@@ -97,8 +97,8 @@ export function ProjectInfographic() {
       </div>
 
       <p className="projectInfographicCaption">
-        Virginie IA vous accompagne à chaque étape afin de simplifier votre
-        projet et vous orienter vers la meilleure solution.
+        Virginie IA vous accompagne à chaque étape pour clarifier votre besoin,
+        préparer votre devis et faciliter la création de vos supports.
       </p>
 
       <div className="projectInfographicSquare" aria-hidden="true">
@@ -113,7 +113,7 @@ export function ProjectInfographic() {
 function ProjectInfographicMini() {
   return (
     <>
-      <p className="projectMiniTitle">Votre projet avec Studio V Creation</p>
+      <p className="projectMiniTitle">Votre projet guidé par Virginie IA</p>
       <div className="projectMiniCenter">
         <Image
           src="/images/virginie-ia-infographic.png"
@@ -138,7 +138,7 @@ function ProjectInfographicMini() {
         })}
       </div>
       <p className="projectMiniCaption">
-        Virginie IA vous accompagne à chaque étape afin de simplifier votre projet.
+        Virginie IA vous accompagne à chaque étape pour simplifier votre projet.
       </p>
     </>
   );

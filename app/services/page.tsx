@@ -67,7 +67,10 @@ export default function ServicesPage() {
                     <Clock3 size={16} aria-hidden="true" />
                     Délai : {service.delay}
                   </span>
-                  <strong>{service.price}</strong>
+                  <div className="servicePriceDetail">
+                    <strong>{service.price}</strong>
+                    <small>{service.priceDetail}</small>
+                  </div>
                 </div>
               </article>
             );

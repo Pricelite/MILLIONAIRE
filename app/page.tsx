@@ -23,6 +23,7 @@ import {
   RevealSection,
   StaggerGroup
 } from "@/components/motion-primitives";
+import { ProjectInfographic } from "@/components/project-infographic";
 import { SectionHeading } from "@/components/section-heading";
 import {
   JsonLd,
@@ -155,6 +156,8 @@ export default function Home() {
         <span>Fichiers numériques</span>
         <span>Prêt à publier</span>
       </RevealSection>
+
+      <ProjectInfographic />
 
       <RevealSection className="section splitSection">
         <div>
